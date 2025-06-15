@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Programming\\C#\\SSHProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\metodsssh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:metodsssh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MetodsSSH.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\MetodsSSH.cs",
+              "RelativeDocumentMoniker": "MetodsSSH.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\MetodsSSH.cs",
+              "RelativeToolTip": "MetodsSSH.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T19:08:58.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T18:39:39.092Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
