@@ -140,7 +140,7 @@ public class MethodsSSH
                     );
                     ProblemUpdate(pc, problem, ErrorImportance_, message); //Изменение проблемы
                 }
-                else if (message == "" && searchInProblem && (ramUsedPercent >= 55 || diskUsageParameter >= 55 || cpuUsageParameter >= 55)) //Близкая к решению проблема
+                else if (message == "" && searchInProblem && (ramUsedPercent >= 40 || diskUsageParameter >= 40 || cpuUsageParameter >= 40)) //Близкая к решению проблема
                 {
                     message = MessageCloseSolution(ramUsedPercent, diskUsageParameter, cpuUsageParameter, ramUsed[1]); //Новое сообщение
                     int ErrorImportance_ = ErrorImportance(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
@@ -150,7 +150,7 @@ public class MethodsSSH
                     );
                     ProblemUpdate(pc, problem, ErrorImportance_, message); //Изменение проблемы
                 }
-                else if (message == "" && searchInProblem && ramUsedPercent <= 55 && diskUsageParameter <= 55 && cpuUsageParameter <= 55) //Проблема решена
+                else if (message == "" && searchInProblem && ramUsedPercent <= 40 && diskUsageParameter <= 40 && cpuUsageParameter <= 40) //Проблема решена
                 {
                     var problem = pc.Problems.First( //Поиск этой проблемы
                         x => x.IdServer == server.IdServer &&
