@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace SSHProject.DB;
+namespace SSHProject;
 
 public partial class PostgresContext : DbContext
 {
@@ -15,11 +15,13 @@ public partial class PostgresContext : DbContext
     {
     }
 
-    public virtual DbSet<ErrorImportance> ErrorImportances { get; set; }
+    public virtual DbSet<Parameter> Parameters { get; set; }
 
     public virtual DbSet<Problem> Problems { get; set; }
 
     public virtual DbSet<Server> Servers { get; set; }
+
+    public virtual DbSet<ServersGroup> ServersGroups { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -27,22 +29,29 @@ public partial class PostgresContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder
-            .HasPostgresExtension("pg_catalog", "adminpack")
-            .HasPostgresExtension("pgcrypto");
+        modelBuilder.HasPostgresExtension("pg_catalog", "adminpack");
 
-        modelBuilder.Entity<ErrorImportance>(entity =>
+        modelBuilder.Entity<Parameter>(entity =>
         {
-            entity.HasKey(e => e.IdErrorImportance).HasName("error_importances_pkey");
+            entity.HasKey(e => e.RequestId).HasName("parameters_pkey");
 
-            entity.ToTable("error_importances");
+            entity.ToTable("parameters");
 
-            entity.Property(e => e.IdErrorImportance)
+            entity.Property(e => e.RequestId)
                 .HasDefaultValueSql("gen_random_uuid()")
-                .HasColumnName("id_error_importance");
-            entity.Property(e => e.NameErrorImportances)
-                .HasColumnType("character varying")
-                .HasColumnName("name_error_importances");
+                .HasColumnName("request_id");
+            entity.Property(e => e.CpuPercent).HasColumnName("cpu_percent");
+            entity.Property(e => e.CreatedAt)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("created_at");
+            entity.Property(e => e.IdServer).HasColumnName("id_server");
+            entity.Property(e => e.RamMb).HasColumnName("ram_mb");
+            entity.Property(e => e.RomMb).HasColumnName("rom_mb");
+
+            entity.HasOne(d => d.IdServerNavigation).WithMany(p => p.Parameters)
+                .HasForeignKey(d => d.IdServer)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("parameters_id_server_fkey");
         });
 
         modelBuilder.Entity<Problem>(entity =>
@@ -60,15 +69,10 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.DateTimeProblem)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("date_time_problem");
-            entity.Property(e => e.IdErrorImportance).HasColumnName("id_error_importance");
+            entity.Property(e => e.ErrorImportance).HasColumnName("error_importance");
             entity.Property(e => e.IdServer).HasColumnName("id_server");
             entity.Property(e => e.MessageProblem).HasColumnName("message_problem");
             entity.Property(e => e.StatusProblem).HasColumnName("status_problem");
-
-            entity.HasOne(d => d.IdErrorImportanceNavigation).WithMany(p => p.Problems)
-                .HasForeignKey(d => d.IdErrorImportance)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("problems_id_error_importance_fkey");
 
             entity.HasOne(d => d.IdServerNavigation).WithMany(p => p.Problems)
                 .HasForeignKey(d => d.IdServer)
@@ -85,18 +89,33 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.IdServer)
                 .HasDefaultValueSql("gen_random_uuid()")
                 .HasColumnName("id_server");
+            entity.Property(e => e.IdServerGroup).HasColumnName("id_server_group");
             entity.Property(e => e.IpAdress)
                 .HasColumnType("character varying")
                 .HasColumnName("ip_adress");
-            entity.Property(e => e.Login)
-                .HasColumnType("character varying")
-                .HasColumnName("login");
             entity.Property(e => e.NameServer)
                 .HasColumnType("character varying")
                 .HasColumnName("name_server");
-            entity.Property(e => e.Password)
+            entity.Property(e => e.ServerStatus).HasColumnName("server_status");
+
+            entity.HasOne(d => d.IdServerGroupNavigation).WithMany(p => p.Servers)
+                .HasForeignKey(d => d.IdServerGroup)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("servers_id_server_group_fkey");
+        });
+
+        modelBuilder.Entity<ServersGroup>(entity =>
+        {
+            entity.HasKey(e => e.IdServerGroup).HasName("servers_groups_pkey");
+
+            entity.ToTable("servers_groups");
+
+            entity.Property(e => e.IdServerGroup)
+                .HasDefaultValueSql("gen_random_uuid()")
+                .HasColumnName("id_server_group");
+            entity.Property(e => e.NameServerGroup)
                 .HasColumnType("character varying")
-                .HasColumnName("password");
+                .HasColumnName("name_server_group");
         });
 
         OnModelCreatingPartial(modelBuilder);

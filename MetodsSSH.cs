@@ -1,8 +1,7 @@
-﻿using Renci.SshNet;
-using SSHProject.DB;
-using System.Dynamic;
+﻿using System.Dynamic;
 using System.Net.Http.Json;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -10,25 +9,24 @@ using Org.BouncyCastle.Asn1.Esf;
 using Org.BouncyCastle.Math.EC.Multiplier;
 using Org.BouncyCastle.Math.EC.Rfc7748;
 using Org.BouncyCastle.Tls;
+using Renci.SshNet;
 
 namespace SSHProject;
 
 public class MethodsSSH
 {
-
+    const string Login = "braws"; //Константа для логина
+    const string Password = "1234567890"; //Константа для пароля
+    const string Path = "shopt -s globstar && cd ~/**/LinuxMonitor/LinuxMonitor/LinuxMonitor && dotnet run"; //Константа для пути запуска программы
     public void SSHConnectAllServers() //Подключение ко всем серверам
     {
-        while (true)
-        {
-            List<Server> serverList = GetServersFromDataBase(); //Получение серверов из базы
+        List<Server> serverList = GetServersFromDataBase(); //Получение серверов из базы
 
-            Parallel.ForEach(serverList, serverInformation => //Паралельный вызов для каждого из серверов
-            {
-                SSHConnect(serverInformation.IdServer, serverInformation.IpAdress, serverInformation.Login,
-                serverInformation.Password);
-            });
-            Thread.Sleep(5000); //Задержка перед получением новых данных
-        }
+        Parallel.ForEach(serverList, serverInformation => //Паралельный вызов для каждого из серверов
+        {
+            SSHConnect(serverInformation.IdServer, serverInformation.IpAdress, Login, //Подключение к серверам
+            Password);
+        });
     }
 
     private List<Server> GetServersFromDataBase()
@@ -38,63 +36,170 @@ public class MethodsSSH
             return serverList.Servers.ToList(); //Получение серверов из базы
         }
     }
+
     private void SSHConnect(Guid idServer, string ip, string login, string password)
+    {
+
+        PostgresContext pc = new PostgresContext();
+
+        var server = pc.Servers.First(x => x.IdServer == idServer);
+
+        using (var serverConnect = new SshClient(ip, login, password)) //Подключение к серверу
+        {
+            string connectMessage = ""; //Для вывода ошибок подключения
+            try
+            {
+                serverConnect.Connect(); //Попытка подключения
+            }
+            catch (Exception ex)
+            {
+                connectMessage = ex.Message; //Сообщение при ошибке подключения
+            }
+            if (serverConnect.IsConnected)
+            {
+                bool searchInProblemConnect = pc.Problems.       //Поиск ошибки подключения этого сервера
+                Where(x => x.IdServer == server.IdServer)
+                .Include(x => x.IdServerNavigation)
+                .Any(x => x.StatusProblem == false && x.IdServerNavigation.ServerStatus == false);
+
+                if (searchInProblemConnect)
+                {
+                    var problem = pc.Problems.Include(x => x.IdServerNavigation).First(x => x.IdServer == server.IdServer //Поиск этой проблемы
+                    && x.IdServerNavigation.ServerStatus == false
+                    && x.StatusProblem == false
+                    && !x.MessageProblem.Contains("RAM")
+                    && !x.MessageProblem.Contains("MEMORY")
+                    && !x.MessageProblem.Contains("CPU")
+                    );
+                    ProblemSolving(pc, problem, "Удалось установить подключение"); //Решение проблемы
+                }
+
+                ServerStatusUdpate(pc, server, true); //Смена статуса на активированный
+
+                var cmd = serverConnect.CreateCommand(Path); //Ввод команды в CMD
+                string[] result = cmd.Execute().Split("\n"); //Получение данных из CMD
+
+                string[] ramUsed = new string[2]; //Получение информации о загруженности оперативной памяти (RAM)
+                string[] ramUsedParameters = new string[2]; //Разделение числовых значений
+                double ramUsedParameter = 0; //Объем занятой оперативной памяти (RAM)
+                double ramUsedParameterMax = 0; //Максимальный объем оперативной памяти (RAM)
+
+                double ramUsedPercent = 0; //Получение процента занятости оперативной памяти (RAM)
+
+                string[] cpuUsed = new string[2]; //Получение информации о загруженности центрального процессора (CPU)
+                double cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
+
+                string[] diskUsage = new string[2]; //Получение информации о загруженности диска
+                double diskUsageParameter = 0; //Процент загруженности диска
+
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (result[i].Contains("[MEMORY]"))
+                    {
+                        ramUsed = result[i].Split(": "); //Получение информации о загруженности оперативной памяти (RAM)
+                        ramUsedParameters = ramUsed[1].Split(" / "); //Разделение числовых значений
+                        ramUsedParameter = Convert.ToDouble(
+                           ramUsedParameters[0].Trim(new char[] { 'G', 'i', ' ' })); //Объем занятой оперативной памяти (RAM)
+                        ramUsedParameterMax = Convert.ToDouble(
+                            ramUsedParameters[1].Trim(new char[] { 'G', 'i', ' ' })); //Максимальный объем оперативной памяти (RAM)
+                        ramUsedPercent = ramUsedParameter / ramUsedParameterMax * 100; //Получение процента занятости оперативной памяти (RAM)
+                    }
+                    else if (result[i].Contains("[STORAGE]"))
+                    {
+                        diskUsage = result[i].Split(": "); //Получение информации о загруженности центрального процессора (CPU)
+                        diskUsageParameter = Convert.ToDouble( //Процент загруженности центрального процессора (CPU)
+                             diskUsage[1].Trim(new char[] { '%' }));
+                    }
+                    else if (result[i].Contains("[CPU]"))
+                    {
+                        cpuUsed = result[i].Split(": "); //Получение информации о загруженности центрального процессора (CPU)
+                        cpuUsageParameter = Convert.ToDouble( //Процент загруженности центрального процессора (CPU)
+                            cpuUsed[1].Trim(new char[] { '%' }));
+                    }
+                }
+
+                CurrentParameters(pc, server.IdServer, ramUsedPercent, cpuUsageParameter, diskUsageParameter); //Заполнение параметров серверов
+
+                string message = Message(ramUsedPercent, cpuUsageParameter, diskUsageParameter, ramUsed[1]); //Получение сообщения о нагруженности
+
+                bool searchInProblem = pc.Problems. //Проверка на проблемы этого сервера
+                Where(x => x.IdServer == server.IdServer)
+                .Any(x => x.StatusProblem == false);
+
+                if (message != "" && !searchInProblem) //Отсутствие проблем этого сервера
+                {
+                    int ErrorImportance_ = ErrorImportance(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
+                    ProblemAdd(pc, server.IdServer, ErrorImportance_, message); //Добавление новой проблемы
+                }
+                else if (message != "" && searchInProblem) //Проблемы были и до этого
+                {
+                    int ErrorImportance_ = ErrorImportance(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
+                    var problem = pc.Problems.First( //Поиск этой проблемы
+                        x => x.IdServer == server.IdServer &&
+                        x.StatusProblem == false
+                    );
+                    ProblemUpdate(pc, problem, ErrorImportance_, message); //Изменение проблемы
+                }
+                else if (message == "" && searchInProblem && (ramUsedPercent >= 55 || diskUsageParameter >= 55 || cpuUsageParameter >= 55)) //Близкая к решению проблема
+                {
+                    message = MessageCloseSolution(ramUsedPercent, diskUsageParameter, cpuUsageParameter, ramUsed[1]); //Новое сообщение
+                    int ErrorImportance_ = ErrorImportance(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
+                    var problem = pc.Problems.First( //Поиск этой проблемы
+                        x => x.IdServer == server.IdServer &&
+                        x.StatusProblem == false
+                    );
+                    ProblemUpdate(pc, problem, ErrorImportance_, message); //Изменение проблемы
+                }
+                else if (message == "" && searchInProblem && ramUsedPercent <= 55 && diskUsageParameter <= 55 && cpuUsageParameter <= 55) //Проблема решена
+                {
+                    var problem = pc.Problems.First( //Поиск этой проблемы
+                        x => x.IdServer == server.IdServer &&
+                        x.StatusProblem == false
+                    );
+                    ProblemSolving(pc, problem, "Проблема решена"); //Изменение статуса проблемы
+                }
+            }
+            else
+            {
+                bool searchInProblemConnect = pc.Problems. //Поиск ошибки подключения этого сервера
+                Where(x => x.IdServer == server.IdServer)
+                .Include(x => x.IdServerNavigation)
+                .Any(x => x.StatusProblem == false && x.IdServerNavigation.ServerStatus == false);
+
+                ServerStatusUdpate(pc, server, false); //Смена статуса на деактивированный
+
+                if (!searchInProblemConnect)
+                {
+                    ProblemAdd(pc, server.IdServer, 5, connectMessage); //Запись проблемы
+                }
+                else
+                {
+                    var problem = pc.Problems.Include(x => x.IdServerNavigation).First(x => x.IdServer == server.IdServer //Поиск проблемы
+                    && x.IdServerNavigation.ServerStatus == false
+                    && !x.MessageProblem.Contains("RAM")
+                    && !x.MessageProblem.Contains("MEMORY")
+                    && !x.MessageProblem.Contains("CPU")
+                    );
+                    ProblemUpdate(pc, problem, 5, connectMessage); //Обновление проблемы
+                }
+            }
+            serverConnect.Disconnect(); //Отключение от сервера
+        }
+    }
+    private void CurrentParameters(PostgresContext pc, Guid idServer_, double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter) //Заполнение параметров
     {
         try
         {
-            PostgresContext pc = new PostgresContext();
-
-            var serverConnect = new SshClient(ip, login, password); //Подключение к серверу
-            serverConnect.Connect();
-            var cmd = serverConnect.CreateCommand("shopt -s globstar && cd ~/**/LinuxMonitor/LinuxMonitor/LinuxMonitor && dotnet run"); //Ввод команды в CMD
-            string[] result = cmd.Execute().Split("\n"); //Получение данных из CMD
-
-            string[] ramUsed = result[2].Split(": "); //Получение информации о загруженности оперативной памяти (RAM)
-            string[] ramUsedParameters = ramUsed[1].Split(" / "); //Разделение числовых значений
-            double ramUsedParameter = Convert.ToDouble(
-                ramUsedParameters[0].Trim(new char[] { 'G', 'i', ' ' })); //Объем занятой оперативной памяти (RAM)
-            double ramUsedParameterMax = Convert.ToDouble(
-                ramUsedParameters[1].Trim(new char[] { 'G', 'i', ' ' })); //Максимальный объем оперативной памяти (RAM)
-
-            double ramUsedPercent = ramUsedParameter / ramUsedParameterMax * 100; //Получение процента занятости оперативной памяти (RAM)
-
-            string[] cpuUsed = result[5].Split(": "); //Получение информации о загруженности центрального процессора (CPU)
-            double cpuUsageParameter = Convert.ToDouble( //Процент загруженности центрального процессора (CPU)
-                cpuUsed[1].Trim(new char[] { '%' }));
-
-            string[] diskUsage = result[8].Split(": "); //Получение информации о загруженности диска
-            double diskUsageParameter = Convert.ToDouble(  //Процент загруженности диска
-                diskUsage[1].Trim(new char[] { '%' }));
-
-            string message = Message(ramUsedPercent, cpuUsageParameter, diskUsageParameter, ramUsed[1]); //Получение сообщения о нагруженности
-
-            bool searchInProblem = pc.Problems. //Проверка на проблемы этого сервера
-            Where(x => x.IdServer == idServer)
-            .Any(x => x.StatusProblem == false);
-
-            if (message != "" && !searchInProblem) //Отсутствие проблем этого сервера
+            Parameter newParameter = new Parameter()
             {
-                Guid IdErrorImportance_ = ErrorImportanceID(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
-                ProblemAdd(pc, idServer, IdErrorImportance_, message); //Добавление новой проблемы
-            }
-            else if (message != "" && searchInProblem) //Проблемы были и до этого
-            {
-                Guid IdErrorImportance_ = ErrorImportanceID(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
-                var problem = pc.Problems.First(x => x.IdServer == idServer); //Поиск этой проблемы
-                ProblemUpdate(pc, problem, IdErrorImportance_, message); //Изменение проблемы
-            }
-            else if (message == "" && searchInProblem && (ramUsedPercent >= 55 || diskUsageParameter >= 55 || cpuUsageParameter >= 55)) //Близкая к решению проблема
-            {
-                message = MessageCloseSolution(ramUsedPercent, diskUsageParameter, cpuUsageParameter, ramUsed[1]); //Новое сообщение
-                Guid IdErrorImportance_ = ErrorImportanceID(ramUsedPercent, cpuUsageParameter, diskUsageParameter, pc); //Получение критичности проблемы
-                var problem = pc.Problems.First(x => x.IdServer == idServer);
-                ProblemUpdate(pc, problem, IdErrorImportance_, message); //Изменение проблемы
-            }
-            else if (message == "" && searchInProblem && ramUsedPercent <= 55 && diskUsageParameter <= 55 && cpuUsageParameter <= 55) //Проблема решена
-            {
-                var problem = pc.Problems.First(x => x.IdServer == idServer); //Поиск проблемы
-                ProblemSolving(pc, problem, message); //Изменение статуса проблемы
-            }
+                CreatedAt = DateTime.Now,
+                IdServer = idServer_,
+                RamMb = Convert.ToInt32(Math.Round((decimal)ramUsedPercent, 0)),
+                CpuPercent = Convert.ToInt32(Math.Round((decimal)cpuUsageParameter, 0)),
+                RomMb = Convert.ToInt32(Math.Round((decimal)diskUsageParameter, 0))
+            };
+            pc.Parameters.Add(newParameter); //Добавление в бд
+            pc.SaveChanges();
         }
         catch (Exception ex)
         {
@@ -106,15 +211,15 @@ public class MethodsSSH
     {
         string message = "";
 
-        if (ramUsedPercent >= 60.0) //При нагрузке RAM >= 60%
+        if (ramUsedPercent >= 50.0) //При нагрузке RAM >= 50%
         {
-            message += $"RAM занята на {ramUsedPercent}% ({ramUsedParameters});\n";
+            message += $"RAM занята на {Math.Round((decimal)ramUsedPercent, 0)}% ({ramUsedParameters});\n";
         }
-        if (diskUsageParameter >= 60.0) //При нагрузке диска >= 60%
+        if (diskUsageParameter >= 50.0) //При нагрузке диска >= 50%
         {
-            message += $"Диск занят на {diskUsageParameter}%;\n";
+            message += $"MEMORY занята на {diskUsageParameter}%;\n";
         }
-        if (cpuUsageParameter >= 60.0) //При нагрузке CPU >= 60%
+        if (cpuUsageParameter >= 50.0) //При нагрузке CPU >= 50%
         {
             message += $"CPU загружен на {cpuUsageParameter}%;";
         }
@@ -125,47 +230,46 @@ public class MethodsSSH
     {
         string message = "";
 
-        if (ramUsedPercent >= 55.0) //При нагрузке RAM >= 55%
+        if (ramUsedPercent >= 40.0) //При нагрузке RAM >= 40%
         {
             message += $"RAM занята на {ramUsedPercent}% ({ramUsedParameters});\n";
         }
-        if (diskUsageParameter >= 55.0) //При нагрузке диска >= 55%
+        if (diskUsageParameter >= 40.0) //При нагрузке диска >= 40%
         {
-            message += $"Диск занят на {diskUsageParameter}%;\n";
+            message += $"MEMORY занят на {diskUsageParameter}%;\n";
         }
-        if (cpuUsageParameter >= 55.0) //При нагрузке CPU >= 55%
+        if (cpuUsageParameter >= 40.0) //При нагрузке CPU >= 40%
         {
             message += $"CPU загружен на {cpuUsageParameter}%;";
         }
         return message;
     }
 
-    private Guid ErrorImportanceID(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, PostgresContext pc) //Критичность ошибки
+    private int ErrorImportance(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, PostgresContext pc) //Критичность ошибки
     {
-        if (ramUsedPercent >= 90.0 || cpuUsageParameter >= 90.0 || diskUsageParameter >= 90.0) //Чрезмерно высокая
+        if (ramUsedPercent >= 90.0 || cpuUsageParameter >= 90.0 || diskUsageParameter >= 90.0) //Критическая
         {
-            return pc.ErrorImportances
-            .Where(i => i.NameErrorImportances == "Чрезмерно высокая нагрузка")
-            .Select(i => i.IdErrorImportance)
-            .FirstOrDefault();
+            return 5;
         }
-        else if (ramUsedPercent >= 75.0 || cpuUsageParameter >= 75.0 || diskUsageParameter >= 75.0) //Высокая
+        else if (ramUsedPercent >= 80.0 || cpuUsageParameter >= 80.0 || diskUsageParameter >= 80.0) //Очень высокая
         {
-            return pc.ErrorImportances
-            .Where(i => i.NameErrorImportances == "Высокая нагрузка")
-            .Select(i => i.IdErrorImportance)
-            .FirstOrDefault();
+            return 4;
         }
-        else //Умеренная
+        else if (ramUsedPercent >= 70.0 || cpuUsageParameter >= 70.0 || diskUsageParameter >= 70.0) //Высокая
         {
-            return pc.ErrorImportances
-            .Where(i => i.NameErrorImportances == "Умеренная нагрузка")
-            .Select(i => i.IdErrorImportance)
-            .FirstOrDefault();
+            return 3;
+        }
+        else if (ramUsedPercent >= 60.0 || cpuUsageParameter >= 60.0 || diskUsageParameter >= 60.0) //Умеренная
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
         }
     }
 
-    private void ProblemAdd(PostgresContext pc, Guid IdServer_, Guid IdErrorImportance_, string message) //Добавление новой проблемы
+    private void ProblemAdd(PostgresContext pc, Guid IdServer_, int ErrorImportance_, string message) //Добавление новой проблемы
     {
         try
         {
@@ -173,7 +277,7 @@ public class MethodsSSH
             {
                 DateTimeProblem = DateTime.Now,
                 DateProblemSolution = null,
-                IdErrorImportance = IdErrorImportance_,
+                ErrorImportance = ErrorImportance_,
                 StatusProblem = false,
                 IdServer = IdServer_,
                 MessageProblem = message
@@ -187,12 +291,12 @@ public class MethodsSSH
         }
     }
 
-    private void ProblemUpdate(PostgresContext pc, Problem problem, Guid IdErrorImportance_, string message) //Измение существующей проблемы
+    private void ProblemUpdate(PostgresContext pc, Problem problem, int ErrorImportance_, string message) //Измение существующей проблемы
     {
         try
         {
             problem.MessageProblem = message;
-            problem.IdErrorImportance = IdErrorImportance_;
+            problem.ErrorImportance = ErrorImportance_;
 
             pc.SaveChanges();
         }
@@ -208,6 +312,20 @@ public class MethodsSSH
         {
             problem.MessageProblem = message;
             problem.StatusProblem = true;
+
+            pc.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+
+    private void ServerStatusUdpate(PostgresContext pc, Server server, bool serverStatus) //Обновление статуса проблемы
+    {
+        try
+        {
+            server.ServerStatus = serverStatus;
 
             pc.SaveChanges();
         }

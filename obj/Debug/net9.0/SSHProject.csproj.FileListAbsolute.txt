@@ -33,7 +33,6 @@ D:\Programming\C#\SSHProject\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstr
 D:\Programming\C#\SSHProject\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 D:\Programming\C#\SSHProject\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
 D:\Programming\C#\SSHProject\bin\Debug\net9.0\Mono.TextTemplating.dll
-D:\Programming\C#\SSHProject\bin\Debug\net9.0\Newtonsoft.Json.dll
 D:\Programming\C#\SSHProject\bin\Debug\net9.0\Npgsql.dll
 D:\Programming\C#\SSHProject\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\Programming\C#\SSHProject\bin\Debug\net9.0\Renci.SshNet.dll

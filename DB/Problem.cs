@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SSHProject.DB;
+namespace SSHProject;
 
 public partial class Problem
 {
@@ -11,15 +11,13 @@ public partial class Problem
 
     public DateTime? DateProblemSolution { get; set; }
 
-    public Guid IdErrorImportance { get; set; }
+    public int ErrorImportance { get; set; }
 
     public bool StatusProblem { get; set; }
 
     public Guid IdServer { get; set; }
 
     public string MessageProblem { get; set; } = null!;
-
-    public virtual ErrorImportance IdErrorImportanceNavigation { get; set; } = null!;
 
     public virtual Server IdServerNavigation { get; set; } = null!;
 }
