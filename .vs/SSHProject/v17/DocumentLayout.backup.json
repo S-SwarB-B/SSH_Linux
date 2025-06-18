@@ -23,15 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SSHProject",
+              "Title": "SSHProject.csproj",
               "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\SSHProject.csproj",
               "RelativeDocumentMoniker": "SSHProject.csproj",
               "ToolTip": "D:\\Programming\\C#\\SSHProject\\SSHProject.csproj",
               "RelativeToolTip": "SSHProject.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T19:14:17.426Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T19:14:17.426Z"
             },
             {
               "$type": "Document",
@@ -41,7 +40,7 @@
               "RelativeDocumentMoniker": "MetodsSSH.cs",
               "ToolTip": "D:\\Programming\\C#\\SSHProject\\MetodsSSH.cs",
               "RelativeToolTip": "MetodsSSH.cs",
-              "ViewState": "AgIAACcBAAAAAAAAAAAYwE0BAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAcwJUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T19:08:58.634Z",
               "EditorCaption": ""

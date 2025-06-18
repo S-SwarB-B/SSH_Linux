@@ -213,15 +213,15 @@ public class MethodsSSH
 
         if (ramUsedPercent >= 50.0) //При нагрузке RAM >= 50%
         {
-            message += $"RAM занята на {Math.Round((decimal)ramUsedPercent, 0)}% ({ramUsedParameters});\n";
+            message += $"RAM: {Math.Round((decimal)ramUsedPercent, 0)}% ({ramUsedParameters})   ";
         }
         if (diskUsageParameter >= 50.0) //При нагрузке диска >= 50%
         {
-            message += $"MEMORY занята на {diskUsageParameter}%;\n";
+            message += $"MEMORY: {diskUsageParameter}%   ";
         }
         if (cpuUsageParameter >= 50.0) //При нагрузке CPU >= 50%
         {
-            message += $"CPU загружен на {cpuUsageParameter}%;";
+            message += $"CPU: {cpuUsageParameter}%";
         }
         return message;
     }
@@ -232,15 +232,15 @@ public class MethodsSSH
 
         if (ramUsedPercent >= 40.0) //При нагрузке RAM >= 40%
         {
-            message += $"RAM занята на {ramUsedPercent}% ({ramUsedParameters});\n";
+            message += $"RAM: {Math.Round((decimal)ramUsedPercent, 0)}% ({ramUsedParameters})   ";
         }
         if (diskUsageParameter >= 40.0) //При нагрузке диска >= 40%
         {
-            message += $"MEMORY занят на {diskUsageParameter}%;\n";
+            message += $"MEMORY: {diskUsageParameter}%   ";
         }
         if (cpuUsageParameter >= 40.0) //При нагрузке CPU >= 40%
         {
-            message += $"CPU загружен на {cpuUsageParameter}%;";
+            message += $"CPU: {cpuUsageParameter}%";
         }
         return message;
     }
