@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SSHProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+795f010a92d391941be9a11d51779fa090429931")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a3496440bbfed1989af2e45b951a0468ad6903d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SSHProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SSHProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

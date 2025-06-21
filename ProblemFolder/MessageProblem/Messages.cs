@@ -1,6 +1,8 @@
-﻿using System;
+﻿using SSHProject.ParametersFolder.Parameters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +10,7 @@ namespace SSHProject
 {
     internal class Messages
     {
-        public static string Message(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, string ramUsedParameters, int sync, TimeSpan datetime) //Сообщение
+        public static string Message(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, string ramUsedParameters, int sync, TimeSpan datetime, int network) //Сообщение
         {
             string message = "";
 
@@ -26,16 +28,20 @@ namespace SSHProject
             }
             if (sync == 0)
             {
-                message += $"{Constants.ActiveProblem.SyncProblem}   ";
+                message += $"{Constants.ActiveProblem.SyncProblem} {sync}   ";
             }
             if (datetime.TotalSeconds >= 15)
             {
-                message += $"{Constants.ActiveProblem.DataProblem} {Math.Round((decimal)datetime.TotalSeconds, 0)} сек";
+                message += $"{Constants.ActiveProblem.DataProblem} {Math.Round((decimal)datetime.TotalSeconds, 0)}   ";
+            }
+            if (network == 0) 
+            {
+                message += $"{Constants.ActiveProblem.NetworkProblem} {network}";
             }
             return message;
         }
 
-        public static string MessageCloseSolution(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, string ramUsedParameters, int sync, TimeSpan datetime) //Сообщение близкое к решению
+        public static string MessageCloseSolution(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, string ramUsedParameters, int sync, TimeSpan datetime, int network) //Сообщение близкое к решению
         {
             string message = "";
 
@@ -57,7 +63,11 @@ namespace SSHProject
             }
             if (datetime.TotalSeconds >= 10)
             {
-                message += $"{Constants.ActiveProblem.DataProblem} {Math.Round((decimal)datetime.TotalSeconds, 0)} сек";
+                message += $"{Constants.ActiveProblem.DataProblem} {Math.Round((decimal)datetime.TotalSeconds, 0)}   ";
+            }
+            if (network == 0)
+            {
+                message += $"{Constants.ActiveProblem.NetworkProblem} {network}";
             }
             return message;
         }

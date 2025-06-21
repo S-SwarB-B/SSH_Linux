@@ -1,5 +1,6 @@
 ﻿using Renci.SshNet;
 using SSHProject.ParametersFolder;
+using SSHProject.ParametersFolder.Parameters;
 using SSHProject.ProblemFolder;
 using System;
 using System.Collections.Generic;
@@ -61,18 +62,22 @@ namespace SSHProject
                         string[] dateTimeInfo = new string[5];
                         TimeSpan dateTime = new TimeSpan();
 
+                        int network = 0;
+
                         ParametersCompletion.Parameters(result,
                             ref memoryUsed, ref memoryUsedPercent,
                             ref storageUsageParameter,
-                            ref cpuUsageParameter
+                            ref cpuUsageParameter,
+                            ref sync,
+                            ref network
                         );
 
                         CurrentParameters.AddParametersInDataBase(sc, server.IdServer, memoryUsedPercent, cpuUsageParameter, storageUsageParameter); //Заполнение параметров серверов
 
                         string message = Messages.Message(memoryUsedPercent, cpuUsageParameter, storageUsageParameter,
-                        memoryUsed[1], sync, dateTime); //Получение сообщения о нагруженности
+                        memoryUsed[1], sync, dateTime, network); //Получение сообщения о нагруженности
 
-                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, memoryUsed, cpuUsageParameter, storageUsageParameter, dateTime, sync);
+                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, memoryUsed, cpuUsageParameter, storageUsageParameter, dateTime, sync, network);
 
                     }
                     else

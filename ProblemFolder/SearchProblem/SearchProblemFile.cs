@@ -13,12 +13,12 @@ namespace SSHProject
         {
             return sc.Problems 
                     .Where(x => x.IdServer == server.IdServer)
-                    .Any(x => x.StatusProblem == false && x.MessageProblem == Constants.MessageFailedFile);
+                    .Any(x => x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile);
         }
         public static Problem SearchCertainProblemFile(SSHContext sc, Server server)
         {
             return sc.Problems.First(x => x.IdServer == server.IdServer
-                   && x.StatusProblem == false && x.MessageProblem == Constants.MessageFailedFile);
+                   && x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile);
         }
     }
 }

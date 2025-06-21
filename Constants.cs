@@ -30,8 +30,8 @@ namespace SSHProject
             public const string TagMEMORY = "[MEMORY]";
             public const string TagSTORAGE = "[STORAGE]";
             public const string TagSYSTIME = "[SYSTIME]";
-            public const string Tag1 = "";
-            public const string Tag2 = "";
+            public const string TagSYNCTIME = "[SYNCTIME]";
+            public const string TagNETWORK = "[NETWORK]";
         }
 
         //Сообщения решенных ошибок
@@ -50,7 +50,8 @@ namespace SSHProject
             public const string MemoryProblem = "MEMORY:";
             public const string StorageProblem = "STORAGE:";
             public const string CPUProblem = "CPU:";
-            public const string SyncProblem = "Sync = NO";
+            public const string NetworkProblem = "Network:";
+            public const string SyncProblem = "Sync:";
             public const string DataProblem = "Разница времени:";
             public const string Problem1 = "";
         }
@@ -81,6 +82,11 @@ namespace SSHProject
                 public const double Memory = 60;
                 public const double Storage = 60;
                 public const double CPU = 60;
+            }
+            internal static class ImportanceAdditional // 2 - Medium; 3 - Hight; 4 - VeryHight; 5 - Critical
+            {
+                public const int Sync = 2;
+                public const int Network = 2;
             }
         }
     }

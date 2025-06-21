@@ -15,14 +15,14 @@ namespace SSHProject
                 .Where(x => x.IdServer == server.IdServer)
                 .Include(x => x.IdServerNavigation)
                 .Any(x => x.StatusProblem == false && x.IdServerNavigation.ServerStatus == false 
-                    && x.MessageProblem == Constants.MessageFailedConnect);
+                    && x.MessageProblem == Constants.ActiveProblem.MessageFailedConnect);
         }
         public static Problem SearchCertainProblemConnect (SSHContext sc, Server server)
         {
             return sc.Problems.Include(x => x.IdServerNavigation).First(x => x.IdServer == server.IdServer
                    && x.IdServerNavigation.ServerStatus == false
                    && x.StatusProblem == false
-                   && x.MessageProblem == Constants.MessageFailedConnect
+                   && x.MessageProblem == Constants.ActiveProblem.MessageFailedConnect
                    );
         }
     }
