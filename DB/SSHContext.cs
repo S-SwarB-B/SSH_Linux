@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SSHProject;
 
-public partial class PostgresContext : DbContext
+public partial class SSHContext : DbContext
 {
-    public PostgresContext()
+    public SSHContext()
     {
     }
 
-    public PostgresContext(DbContextOptions<PostgresContext> options)
+    public SSHContext(DbContextOptions<SSHContext> options)
         : base(options)
     {
     }
