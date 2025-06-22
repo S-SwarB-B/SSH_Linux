@@ -33,7 +33,8 @@ namespace SSHProject
                     ServerStatusUpdate.ServerStatusUpd(sc, server, true); //Смена статуса на активированный
 
                     string? cmdReturnStr = null;
-                    SshCommand? cmd = OpenFile.StartServerMonitoringAgent(serverConnect, path, ref cmdReturnStr);
+                    string parametersServer = ParametersServer.ParametersForServer(sc, server);
+                    SshCommand? cmd = OpenFile.StartServerMonitoringAgent(serverConnect, path, "", ref cmdReturnStr);
 
                     if (cmd != null && cmdReturnStr != null
                         && cmdReturnStr.Contains(Constants.Tags.TagCPU)
@@ -56,11 +57,11 @@ namespace SSHProject
 
                         double storageUsageParameter = 0; //Процент загруженности диска
 
-                        int sync = 0;
+                        int sync = -1;
 
-                        int systime = 0;
+                        int systime = -1;
 
-                        int network = 0;
+                        int network = -1;
 
                         ParametersCompletion.Parameters(result,
                             ref memoryUsedPercent,

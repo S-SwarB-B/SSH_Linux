@@ -9,12 +9,12 @@ namespace SSHProject
 {
     internal class OpenFile
     {
-        public static SshCommand? StartServerMonitoringAgent(SshClient serverConnect, string path, ref string? cmdReturnStr)
+        public static SshCommand? StartServerMonitoringAgent(SshClient serverConnect, string path, string parametersServer, ref string? cmdReturnStr)
         {
             SshCommand? cmd = null;
             try
             {
-                cmd = serverConnect.CreateCommand(path); //Ввод команды в CMD
+                cmd = serverConnect.CreateCommand(path + parametersServer); //Ввод команды в CMD
                 cmdReturnStr = cmd.Execute();
             }
             catch

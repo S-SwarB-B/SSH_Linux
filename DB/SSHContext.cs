@@ -15,6 +15,10 @@ public partial class SSHContext : DbContext
     {
     }
 
+    public virtual DbSet<AdditionalParameter> AdditionalParameters { get; set; }
+
+    public virtual DbSet<AdditionalParametersserver> AdditionalParametersservers { get; set; }
+
     public virtual DbSet<Parameter> Parameters { get; set; }
 
     public virtual DbSet<Problem> Problems { get; set; }
@@ -30,6 +34,39 @@ public partial class SSHContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasPostgresExtension("pg_catalog", "adminpack");
+
+        modelBuilder.Entity<AdditionalParameter>(entity =>
+        {
+            entity.HasKey(e => e.IdAdditionalParameter).HasName("additional_parameters_pkey");
+
+            entity.ToTable("additional_parameters");
+
+            entity.Property(e => e.IdAdditionalParameter)
+                .HasDefaultValueSql("gen_random_uuid()")
+                .HasColumnName("id_additional_parameter");
+            entity.Property(e => e.Name)
+                .HasColumnType("character varying")
+                .HasColumnName("name");
+        });
+
+        modelBuilder.Entity<AdditionalParametersserver>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("additional_parametersservers");
+
+            entity.Property(e => e.IdAdditionalParameter).HasColumnName("id_additional_parameter");
+            entity.Property(e => e.IdServer).HasColumnName("id_server");
+
+            entity.HasOne(d => d.IdAdditionalParameterNavigation).WithMany()
+                .HasForeignKey(d => d.IdAdditionalParameter)
+                .HasConstraintName("additional_parametersservers_id_additional_parameter_fkey");
+
+            entity.HasOne(d => d.IdServerNavigation).WithMany()
+                .HasForeignKey(d => d.IdServer)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("additional_parametersservers_id_server_fkey");
+        });
 
         modelBuilder.Entity<Parameter>(entity =>
         {
