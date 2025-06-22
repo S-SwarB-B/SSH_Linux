@@ -10,9 +10,8 @@ namespace SSHProject.ParametersFolder.Parameters
     {
         public static int SyncParameter(string[] result, int countInResult)
         {
-            string[] syncInfo = result[countInResult].Split(": ");
-            if (syncInfo[1].Contains("yes")) { return 1; }
-            else { return 0; }
+            string[] syncInfo = result[countInResult].Split($"{Constants.Tags.TagSYNCTIME} ");
+            return Convert.ToInt32(syncInfo[1]);
         }
     }
 }

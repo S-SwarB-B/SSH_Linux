@@ -10,8 +10,8 @@ namespace SSHProject.ParametersFolder.Parameters
     {
         public static double CPUUsedParameter(string[] result, int countInResult)
         {
-            string[] CPUUsage = result[countInResult].Split(": ");
-            return Convert.ToDouble(CPUUsage[1].Trim(new char[] { '%' }));
+            string[] CPUUsage = result[countInResult].Split($"{Constants.Tags.TagCPU} ");
+            return Convert.ToDouble(CPUUsage[1]);
         }
     }
 }

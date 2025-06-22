@@ -10,13 +10,13 @@ namespace SSHProject
 {
     internal class Messages
     {
-        public static string Message(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, string ramUsedParameters, int sync, TimeSpan datetime, int network) //Сообщение
+        public static string Message(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, int sync, int systime, int network) //Сообщение
         {
             string message = "";
 
             if (ramUsedPercent >= 50.0) //При нагрузке RAM >= 50%
             {
-                message += $"{Constants.ActiveProblem.MemoryProblem} {Math.Round((decimal)ramUsedPercent, 0)}% ({ramUsedParameters})   ";
+                message += $"{Constants.ActiveProblem.MemoryProblem} {Math.Round((decimal)ramUsedPercent, 0)}%   ";
             }
             if (diskUsageParameter >= 50.0) //При нагрузке диска >= 50%
             {
@@ -30,9 +30,9 @@ namespace SSHProject
             {
                 message += $"{Constants.ActiveProblem.SyncProblem} {sync}   ";
             }
-            if (datetime.TotalSeconds >= 15)
+            if (systime == 0)
             {
-                message += $"{Constants.ActiveProblem.DataProblem} {Math.Round((decimal)datetime.TotalSeconds, 0)}   ";
+                message += $"{Constants.ActiveProblem.SystimeProblem} {systime}   ";
             }
             if (network == 0) 
             {
@@ -41,13 +41,13 @@ namespace SSHProject
             return message;
         }
 
-        public static string MessageCloseSolution(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, string ramUsedParameters, int sync, TimeSpan datetime, int network) //Сообщение близкое к решению
+        public static string MessageCloseSolution(double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, int sync, int systime, int network) //Сообщение близкое к решению
         {
             string message = "";
 
             if (ramUsedPercent >= 40.0) //При нагрузке RAM >= 40%
             {
-                message += $"{Constants.ActiveProblem.MemoryProblem} {Math.Round((decimal)ramUsedPercent, 0)}% ({ramUsedParameters})   ";
+                message += $"{Constants.ActiveProblem.MemoryProblem} {Math.Round((decimal)ramUsedPercent, 0)}%   ";
             }
             if (diskUsageParameter >= 40.0) //При нагрузке диска >= 40%
             {
@@ -59,11 +59,11 @@ namespace SSHProject
             }
             if (sync == 0)
             {
-                message += $"{Constants.ActiveProblem.SyncProblem}   ";
+                message += $"{Constants.ActiveProblem.SyncProblem} {sync}   ";
             }
-            if (datetime.TotalSeconds >= 10)
+            if (systime == 0)
             {
-                message += $"{Constants.ActiveProblem.DataProblem} {Math.Round((decimal)datetime.TotalSeconds, 0)}   ";
+                message += $"{Constants.ActiveProblem.SystimeProblem} {systime}   ";
             }
             if (network == 0)
             {

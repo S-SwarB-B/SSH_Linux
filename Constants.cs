@@ -52,8 +52,7 @@ namespace SSHProject
             public const string CPUProblem = "CPU:";
             public const string NetworkProblem = "Network:";
             public const string SyncProblem = "Sync:";
-            public const string DataProblem = "Разница времени:";
-            public const string Problem1 = "";
+            public const string SystimeProblem = "Systime:";
         }
 
         //Критичность
@@ -87,6 +86,7 @@ namespace SSHProject
             {
                 public const int Sync = 2;
                 public const int Network = 2;
+                public const int SysTime = 2;
             }
         }
     }

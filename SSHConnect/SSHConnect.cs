@@ -49,35 +49,34 @@ namespace SSHProject
                         }
 
                         string[] result = cmdReturnStr.Split("\n"); //Получение данных из CMD
-
-                        string[] memoryUsed = new string[2]; //Получение информации о загруженности оперативной памяти (RAM)               
+         
                         double memoryUsedPercent = 0;
 
                         double cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
 
                         double storageUsageParameter = 0; //Процент загруженности диска
 
-                        string[] sysTimeInfo = new string[2]; //Получение информации о системном времени
                         int sync = 0;
-                        string[] dateTimeInfo = new string[5];
-                        TimeSpan dateTime = new TimeSpan();
+
+                        int systime = 0;
 
                         int network = 0;
 
                         ParametersCompletion.Parameters(result,
-                            ref memoryUsed, ref memoryUsedPercent,
+                            ref memoryUsedPercent,
                             ref storageUsageParameter,
                             ref cpuUsageParameter,
                             ref sync,
+                            ref systime,
                             ref network
                         );
 
                         CurrentParameters.AddParametersInDataBase(sc, server.IdServer, memoryUsedPercent, cpuUsageParameter, storageUsageParameter); //Заполнение параметров серверов
 
                         string message = Messages.Message(memoryUsedPercent, cpuUsageParameter, storageUsageParameter,
-                        memoryUsed[1], sync, dateTime, network); //Получение сообщения о нагруженности
+                        sync, systime, network); //Получение сообщения о нагруженности
 
-                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, memoryUsed, cpuUsageParameter, storageUsageParameter, dateTime, sync, network);
+                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, systime, sync, network);
 
                     }
                     else

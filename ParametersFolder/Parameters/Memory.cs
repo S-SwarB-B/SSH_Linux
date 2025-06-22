@@ -8,15 +8,10 @@ namespace SSHProject.ParametersFolder.Parameters
 {
     internal class Memory
     {
-        public static double MemoryUsedParameter(string[] memoryUsed)
+        public static double MemoryUsedParameter(string[] result, int countInResult)
         {
-            string[] memoryUsedParameters = memoryUsed[1].Split(" / "); //Разделение числовых значений
-            double memoryUsedParameter = Convert.ToDouble(
-               memoryUsedParameters[0].Trim(new char[] { 'G', 'i', ' ', 'M', 'K' })); //Объем занятой оперативной памяти (RAM)
-            double memoryUsedParameterMax = Convert.ToDouble(
-                memoryUsedParameters[1].Trim(new char[] { 'G', 'i', ' ', 'M', 'K' })); //Максимальный объем оперативной памяти (RAM)
-
-            return memoryUsedParameter / memoryUsedParameterMax * 100; //Получение процента занятости оперативной памяти (RAM)
+            string[] memoryUsedParameters = result[countInResult].Split($"{Constants.Tags.TagMEMORY} ");
+            return Convert.ToDouble(memoryUsedParameters[1]);
         }
     }
 }

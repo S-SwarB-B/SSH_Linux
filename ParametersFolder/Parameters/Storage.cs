@@ -10,8 +10,8 @@ namespace SSHProject.ParametersFolder.Parameters
     {
         public static double StorageUsedParameter(string[] result, int countInResult)
         {
-            string[] storageUsage = result[countInResult].Split(": ");
-            return Convert.ToDouble(storageUsage[1].Trim(new char[] { '%' }));
+            string[] storageUsage = result[countInResult].Split($"{Constants.Tags.TagSTORAGE} ");
+            return Convert.ToDouble(storageUsage[1]);
         }
     }
 }

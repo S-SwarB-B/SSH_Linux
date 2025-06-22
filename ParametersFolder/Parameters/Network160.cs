@@ -10,10 +10,8 @@ namespace SSHProject.ParametersFolder.Parameters
     {
         public static int NetworkParameter(string[] result, int countInResult)
         {
-            string[] networkInfo = result[countInResult].Split(": ");
-            string[] ip = networkInfo[1].Split(".");
-            if (ip[3] == "160") { return 1; }
-            else { return 0; }
+            string[] networkInfo = result[countInResult].Split($"{Constants.Tags.TagNETWORK} ");
+            return Convert.ToInt32(networkInfo[1]);
         }
     }
 }

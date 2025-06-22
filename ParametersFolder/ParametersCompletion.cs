@@ -11,10 +11,11 @@ namespace SSHProject
     {
         public static void Parameters(
             string[] result,
-            ref string[] memoryUsed, ref double memoryUsedPercent,
+            ref double memoryUsedPercent,
             ref double storageUsageParameter,
             ref double cpuUsageParameter,
             ref int sync,
+            ref int systime,
             ref int network
             )
         {
@@ -22,8 +23,7 @@ namespace SSHProject
             {
                 if (result[i].Contains(Constants.Tags.TagMEMORY))
                 {
-                    memoryUsed = result[i].Split(": ");
-                    memoryUsedPercent = Memory.MemoryUsedParameter(memoryUsed);
+                    memoryUsedPercent = Memory.MemoryUsedParameter(result, i);
                 }
                 else if (result[i].Contains(Constants.Tags.TagSTORAGE))
                 {
@@ -32,6 +32,10 @@ namespace SSHProject
                 else if (result[i].Contains(Constants.Tags.TagCPU))
                 {
                     cpuUsageParameter = CPU.CPUUsedParameter(result, i);
+                }
+                else if (result[i].Contains(Constants.Tags.TagSYSTIME))
+                {
+                    systime = SysTime.SysTimeParameter(result, i);
                 }
                 else if (result[i].Contains(Constants.Tags.TagSYNCTIME))
                 {
