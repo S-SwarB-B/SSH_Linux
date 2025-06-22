@@ -8,10 +8,10 @@ namespace SSHProject
 {
     internal class SysTime
     {
-        public static int SysTimeParameter(string[] result, int countInResult)
+        public static int SysTimeParameter(string[] result, int countInResult) //SYSTIME
         {
-            string[] SysTimeInfo = result[countInResult].Split($"{Constants.Tags.TagSYSTIME} ");
-            return Convert.ToInt32(SysTimeInfo[1]);
+            string[] SysTimeInfo = result[countInResult].Split($"{Constants.Tags.TagSYSTIME} "); //Обработка результата
+            return Convert.ToInt32(SysTimeInfo[1]);                                              //
         }
     }
 }

@@ -10,41 +10,41 @@ namespace SSHProject.ProblemFolder
 {
     internal class ProblemDefinition
     {
-        public static void ProblemDef(SSHContext sc, string message, Server server, 
-            double memoryUsedPercent,
-            double cpuUsageParameter, 
-            double storageUsageParameter,
-            int sync,
-            int systime,
-            int network
-            )
+        public static void ProblemDef(SSHContext sc, string message, Server server,  // 
+            double memoryUsedPercent,                                                //
+            double cpuUsageParameter,                                                //
+            double storageUsageParameter,                                            // Работа с ошибками
+            int sync,                                                                //
+            int systime,                                                             //
+            int network                                                              //
+            )                                                                        //
         {
-            int ErrorImportance_ = ErrorImportance(memoryUsedPercent, cpuUsageParameter, storageUsageParameter,sync, systime, network, sc);
+            int ErrorImportance_ = ErrorImportance(memoryUsedPercent, cpuUsageParameter, storageUsageParameter,sync, systime, network, sc); //Получение критичности ошибки
 
-            bool searchInProblem = SearchProblemServer.SearchInProblemServer(sc, server);
+            bool searchInProblem = SearchProblemServer.SearchInProblemServer(sc, server); //Поиск проблем этого сервера
 
-            if (message != "" && !searchInProblem)
+            if (message != "" && !searchInProblem) //Если проблем нет
             {
                 DealingProblem.ProblemAdd(sc, server.IdServer, ErrorImportance_, message);
             }
-            else if (message != "" && searchInProblem)
+            else if (message != "" && searchInProblem) //Если проблема существует
             {
-                var problem = SearchProblemServer.SearchCertainProblemServer(sc, server);
-                DealingProblem.ProblemUpdate(sc, problem, ErrorImportance_, message);
+                var problem = SearchProblemServer.SearchCertainProblemServer(sc, server); //Конкретная проблема
+                DealingProblem.ProblemUpdate(sc, problem, ErrorImportance_, message); //Изменение
             }
             else if (message == "" && searchInProblem &&
-            (memoryUsedPercent >= 40 || storageUsageParameter >= 40 || cpuUsageParameter >= 40))
+            (memoryUsedPercent >= 40 || storageUsageParameter >= 40 || cpuUsageParameter >= 40)) //Если проблема близка к решению
             {
                 message = Messages.MessageCloseSolution(memoryUsedPercent, storageUsageParameter, cpuUsageParameter,
-                sync, systime, network);
-                var problem = SearchProblemServer.SearchCertainProblemServer(sc, server);
-                DealingProblem.ProblemUpdate(sc, problem, ErrorImportance_, message);
+                sync, systime, network); //Получение сообщения
+                var problem = SearchProblemServer.SearchCertainProblemServer(sc, server); //Поиск конкретной проблемы
+                DealingProblem.ProblemUpdate(sc, problem, ErrorImportance_, message); //Изменение
             }
-            else if (message == "" && searchInProblem && memoryUsedPercent <= 40 && storageUsageParameter <= 40
-            && cpuUsageParameter <= 40 && sync == 1)
+            else if (message == "" && searchInProblem && memoryUsedPercent <= 40 && storageUsageParameter <= 40 //Проблема решена
+            && cpuUsageParameter <= 40 && sync == 1 && network == 1 && systime == 1)
             {
-                var problem = SearchProblemServer.SearchCertainProblemServer(sc, server);
-                DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulProblem);
+                var problem = SearchProblemServer.SearchCertainProblemServer(sc, server); //Поиск конкретной проблемы
+                DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulProblem); //Завершение проблемы
             }
         }
 

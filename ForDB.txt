@@ -1,0 +1,54 @@
+﻿create extension if not exists "pgcrypto";
+
+drop extension pgcrypto;
+
+create table Servers_Groups
+(
+  id_server_group UUID primary key default gen_random_uuid(),
+  name_server_group varchar not null
+);
+
+create table Servers(
+  id_server UUID primary key default gen_random_uuid(), 
+  name_server varchar not null,
+  ip_adress varchar not null,
+  id_server_group uuid not null references Servers_Groups(id_server_group),
+  server_status bool
+);
+
+create table Parameters
+(
+  request_id uuid primary key default gen_random_uuid(),
+  created_at timestamp not null,
+  id_server uuid not null references Servers(id_server),
+  ram_mb int NOT NULL CHECK (ram_mb > 0),
+  cpu_percent int NOT NULL CHECK (cpu_percent BETWEEN 0 AND 100),
+  rom_mb int NOT NULL CHECK (rom_mb > 0)
+);
+
+create table Problems(
+  id_problem UUID primary key default gen_random_uuid(),
+  date_time_problem TIMESTAMP not null,
+  date_problem_solution TIMESTAMP,
+  error_importance int not null,
+  status_problem bool not null,
+  id_server UUID not null references Servers(id_server),
+  message_problem text not null
+);
+
+create table Additional_Parameters
+(
+  id_additional_parameter uuid primary key default gen_random_uuid(),
+  name varchar not null
+);
+
+create table Additional_ParametersServers
+(
+  id_additional_parameter uuid references Additional_Parameters(id_additional_parameter),
+  id_server uuid not null references Servers(id_server)
+);
+
+insert into Additional_Parameters(name) values
+('[SYSTIME]'),
+('[SYNCTIME]'),
+('[NETWORK]');

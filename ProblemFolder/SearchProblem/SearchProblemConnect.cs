@@ -9,7 +9,7 @@ namespace SSHProject
 {
     internal class SearchProblemConnect
     {
-        public static bool SearchInProblemConnect(SSHContext sc, Server server)
+        public static bool SearchInProblemConnect(SSHContext sc, Server server) //Поиск ошибок подключения
         {
             return sc.Problems
                 .Where(x => x.IdServer == server.IdServer)
@@ -17,7 +17,7 @@ namespace SSHProject
                 .Any(x => x.StatusProblem == false && x.IdServerNavigation.ServerStatus == false 
                     && x.MessageProblem == Constants.ActiveProblem.MessageFailedConnect);
         }
-        public static Problem SearchCertainProblemConnect (SSHContext sc, Server server)
+        public static Problem SearchCertainProblemConnect (SSHContext sc, Server server) //Поиск конкретной ошибки подключения
         {
             return sc.Problems.Include(x => x.IdServerNavigation).First(x => x.IdServer == server.IdServer
                    && x.IdServerNavigation.ServerStatus == false

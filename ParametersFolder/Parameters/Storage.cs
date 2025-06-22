@@ -8,10 +8,10 @@ namespace SSHProject.ParametersFolder.Parameters
 {
     internal class Storage
     {
-        public static double StorageUsedParameter(string[] result, int countInResult)
+        public static double StorageUsedParameter(string[] result, int countInResult) //STORAGE
         {
-            string[] storageUsage = result[countInResult].Split($"{Constants.Tags.TagSTORAGE} ");
-            return Convert.ToDouble(storageUsage[1]);
+            string[] storageUsage = result[countInResult].Split($"{Constants.Tags.TagSTORAGE} "); //Обработка результата
+            return Convert.ToDouble(storageUsage[1]);                                             //
         }
     }
 }

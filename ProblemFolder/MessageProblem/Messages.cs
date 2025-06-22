@@ -26,15 +26,15 @@ namespace SSHProject
             {
                 message += $"{Constants.ActiveProblem.CPUProblem} {cpuUsageParameter}%   ";
             }
-            if (sync == 0)
+            if (sync == 0) //При отсутсвии синхронизации
             {
                 message += $"{Constants.ActiveProblem.SyncProblem} {sync}   ";
             }
-            if (systime == 0)
+            if (systime == 0) //При отствании времени
             {
                 message += $"{Constants.ActiveProblem.SystimeProblem} {systime}   ";
             }
-            if (network == 0) 
+            if (network == 0) //В конце IP не 160
             {
                 message += $"{Constants.ActiveProblem.NetworkProblem} {network}";
             }
@@ -57,15 +57,15 @@ namespace SSHProject
             {
                 message += $"{Constants.ActiveProblem.CPUProblem} {cpuUsageParameter}%   ";
             }
-            if (sync == 0)
+            if (sync == 0) //При отсутсвии синхронизации
             {
                 message += $"{Constants.ActiveProblem.SyncProblem} {sync}   ";
             }
-            if (systime == 0)
+            if (systime == 0) //При отствании времени
             {
                 message += $"{Constants.ActiveProblem.SystimeProblem} {systime}   ";
             }
-            if (network == 0)
+            if (network == 0) //В конце IP не 160
             {
                 message += $"{Constants.ActiveProblem.NetworkProblem} {network}";
             }

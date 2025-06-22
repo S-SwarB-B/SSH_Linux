@@ -9,13 +9,13 @@ namespace SSHProject
 {
     internal class SearchProblemFile
     {
-        public static bool SearchInProblemFile(SSHContext sc, Server server)
+        public static bool SearchInProblemFile(SSHContext sc, Server server) //Поиск ошибок отсутсвия файла
         {
             return sc.Problems 
                     .Where(x => x.IdServer == server.IdServer)
-                    .Any(x => x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile);
+                    .Any(x => x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile); 
         }
-        public static Problem SearchCertainProblemFile(SSHContext sc, Server server)
+        public static Problem SearchCertainProblemFile(SSHContext sc, Server server) //Поиск конкретной ошибки отсутсвия файла
         {
             return sc.Problems.First(x => x.IdServer == server.IdServer
                    && x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile);

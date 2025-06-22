@@ -12,7 +12,7 @@ namespace SSHProject.ParametersFolder
         {
             try
             {
-                Parameter newParameter = new Parameter()
+                Parameter newParameter = new Parameter() //Заполнение нового параметра
                 {
                     CreatedAt = DateTime.Now,
                     IdServer = idServer_,

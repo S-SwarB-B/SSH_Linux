@@ -8,13 +8,13 @@ namespace SSHProject.ProblemFolder.SearchProblem
 {
     internal class SearchProblemServer
     {
-        public static bool SearchInProblemServer(SSHContext sc, Server server)
+        public static bool SearchInProblemServer(SSHContext sc, Server server) //Поиск ошибок
         {
             return sc.Problems.
                     Where(x => x.IdServer == server.IdServer)
                     .Any(x => x.StatusProblem == false);
         }
-        public static Problem SearchCertainProblemServer(SSHContext sc, Server server)
+        public static Problem SearchCertainProblemServer(SSHContext sc, Server server) //Поиск конкретной ошибки
         {
             return sc.Problems.First( 
                 x => x.IdServer == server.IdServer &&

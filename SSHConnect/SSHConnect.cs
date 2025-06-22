@@ -22,65 +22,65 @@ namespace SSHProject
 
                 if (serverConnect.IsConnected)
                 {
-                    bool searchInProblemConnect = SearchProblemConnect.SearchInProblemConnect(sc, server);
+                    bool searchInProblemConnect = SearchProblemConnect.SearchInProblemConnect(sc, server); //Поиск проблем с подключением этого сервера
 
                     if (searchInProblemConnect)
                     {
-                        var problem = SearchProblemConnect.SearchCertainProblemConnect(sc, server);
+                        var problem = SearchProblemConnect.SearchCertainProblemConnect(sc, server); //Конкретная проблема
                         DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulConnect); //Решение проблемы
                     }
 
                     ServerStatusUpdate.ServerStatusUpd(sc, server, true); //Смена статуса на активированный
 
                     string? cmdReturnStr = null;
-                    string parametersServer = ParametersServer.ParametersForServer(sc, server);
-                    SshCommand? cmd = OpenFile.StartServerMonitoringAgent(serverConnect, path, "", ref cmdReturnStr);
+                    string parametersServer = ParametersServer.ParametersForServer(sc, server); //Получение строки с уникальными параметрами
+                    SshCommand? cmd = OpenFile.StartServerMonitoringAgent(serverConnect, path, parametersServer, ref cmdReturnStr); //Открытие файла
 
-                    if (cmd != null && cmdReturnStr != null
+                    if (cmd != null && cmdReturnStr != null //Файл найден
                         && cmdReturnStr.Contains(Constants.Tags.TagCPU)
                         && cmdReturnStr.Contains(Constants.Tags.TagMEMORY)
                         && cmdReturnStr.Contains(Constants.Tags.TagSTORAGE))
                     {
-                        bool searchInProblemFile = SearchProblemFile.SearchInProblemFile(sc, server);
+                        bool searchInProblemFile = SearchProblemFile.SearchInProblemFile(sc, server); //Поиск проблемы отсутствия файла
 
                         if (searchInProblemFile)
                         {
-                            var problem = SearchProblemFile.SearchCertainProblemFile(sc, server);
+                            var problem = SearchProblemFile.SearchCertainProblemFile(sc, server); //Конкретная проблема
                             DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulFile); //Решение проблемы
                         }
 
                         string[] result = cmdReturnStr.Split("\n"); //Получение данных из CMD
          
-                        double memoryUsedPercent = 0;
+                        double memoryUsedPercent = 0; //Процент загруженности оперативной памяти
 
                         double cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
 
                         double storageUsageParameter = 0; //Процент загруженности диска
 
-                        int sync = -1;
+                        int sync = -1; //Синхронизация
 
-                        int systime = -1;
+                        int systime = -1; //Системное время
 
-                        int network = -1;
-
-                        ParametersCompletion.Parameters(result,
-                            ref memoryUsedPercent,
-                            ref storageUsageParameter,
-                            ref cpuUsageParameter,
-                            ref sync,
-                            ref systime,
-                            ref network
-                        );
+                        int network = -1; //IP
+                        
+                        ParametersCompletion.Parameters(result, //
+                            ref memoryUsedPercent,              //
+                            ref storageUsageParameter,          //
+                            ref cpuUsageParameter,              // Получение параметров
+                            ref sync,                           //
+                            ref systime,                        //
+                            ref network                         //
+                        );                                      //
 
                         CurrentParameters.AddParametersInDataBase(sc, server.IdServer, memoryUsedPercent, cpuUsageParameter, storageUsageParameter); //Заполнение параметров серверов
 
                         string message = Messages.Message(memoryUsedPercent, cpuUsageParameter, storageUsageParameter,
                         sync, systime, network); //Получение сообщения о нагруженности
 
-                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, systime, sync, network);
+                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, systime, sync, network); //Работа с проблемами
 
                     }
-                    else
+                    else //Файл не найден
                     {
                         bool searchInProblemFile = SearchProblemFile.SearchInProblemFile(sc, server);
 
@@ -90,7 +90,7 @@ namespace SSHProject
                         }
                     }
                 }
-                else
+                else //Подключение не установлено
                 {
                     bool searchInProblemConnect = SearchProblemConnect.SearchInProblemConnect(sc, server);
 

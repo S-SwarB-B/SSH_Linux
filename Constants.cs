@@ -9,40 +9,34 @@ namespace SSHProject
     internal static class Constants
     {
         //Константы подключения к серверам и получения из них данных
+        // # Login - Логин для захода на сервер
+        // # Password - Пароль для захода на сервер
+        // # Path - Путь к файлу запуска на сервере
         internal static class LogIn
         {
             public const string Login = "braws";
             public const string Password = "1234567890";
             public const string Path = "shopt -s globstar && cd ~/**/ServerMonitoringAgent/ServerMonitoringAgent/ServerMonitoringAgent && dotnet run";
         }
-        
+
         //Константы периодичности удаления данных в БД
+        // # DeleteSolutionProblemIntevalDay - Через сколько дней очищать решенные проблемы
+        // # DeleteParameterIntevalHour - Через сколько часов очищать данные по параметрам
         internal static class DeleteTime
         {
             public const int DeleteSolutionProblemIntevalDay = 3;
             public const int DeleteParameterIntevalHour = 24;
         }
 
-        //Теги
-        internal static class Tags
-        {
-            public const string TagCPU = "[CPU]";
-            public const string TagMEMORY = "[MEMORY]";
-            public const string TagSTORAGE = "[STORAGE]";
-            public const string TagSYSTIME = "[SYSTIME]";
-            public const string TagSYNCTIME = "[SYNCTIME]";
-            public const string TagNETWORK = "[NETWORK]";
-        }
-
-        //Сообщения решенных ошибок
-        internal static class SolutionsProblem
-        {
-            public const string MessageSuccessfulConnect = "Удалось установить подключение";
-            public const string MessageSuccessfulFile = "Файл запуска программы найден";
-            public const string MessageSuccessfulProblem = "Проблема была решена";
-        }
-
-        //Сообщения ошибок
+        //Сообщения ошибок (Перед изменением нужно очистить базу данных)
+        // # MessageFailedConnect - Сообщение о неудачном подключении
+        // # MessageFailedFile - Сообщение о не найденном файле
+        // # MemoryProblem - Сообщение о занятости оперативной памяти
+        // # StorageProblem - Сообщение о занятости памяти диска
+        // # CPUProblem - Сообщение о нагрузке центрального процессора
+        // # NetworkProblem - Сообщение о неправильности IP
+        // # SyncProblem - Сообщение о неправильной синхронизации
+        // # SystimeProblem - Сообщение о проблеме с временем
         internal static class ActiveProblem
         {
             public const string MessageFailedConnect = "Подключение не установлено";
@@ -55,28 +49,51 @@ namespace SSHProject
             public const string SystimeProblem = "Systime:";
         }
 
-        //Критичность
+        //Сообщения решенных ошибок
+        // # MessageSuccessfulConnect - Сообщение о удачном подключении
+        // # MessageSuccessfulFile - Сообщение о найденном файле
+        // # MessageSuccessfulProblem - Сообщение о решении проблемы
+        internal static class SolutionsProblem
+        {
+            public const string MessageSuccessfulConnect = "Удалось установить подключение";
+            public const string MessageSuccessfulFile = "Файл запуска программы найден";
+            public const string MessageSuccessfulProblem = "Проблема была решена";
+        }
+
+
+        //Теги (Лучше не трогать)
+        internal static class Tags
+        {
+            public const string TagCPU = "[CPU]";
+            public const string TagMEMORY = "[MEMORY]";
+            public const string TagSTORAGE = "[STORAGE]";
+            public const string TagSYSTIME = "[SYSTIME]";
+            public const string TagSYNCTIME = "[SYNCTIME]";
+            public const string TagNETWORK = "[NETWORK]";
+        }
+
+        //Критичность (Первые четыре пункта опасно трогать)
         internal static class ErrorImportanceClass
         {
-            internal static class Critical
+            internal static class Critical //Критичная
             {
                 public const double Memory = 90;
                 public const double Storage = 90;
                 public const double CPU = 90;
             }
-            internal static class VeryHight
+            internal static class VeryHight //Очень выскокая
             {
                 public const double Memory = 80;
                 public const double Storage = 80;
                 public const double CPU = 80;
             }
-            internal static class Hight
+            internal static class Hight //Выскокая
             {
                 public const double Memory = 70;
                 public const double Storage = 70;
                 public const double CPU = 70;
             }
-            internal static class Medium
+            internal static class Medium //Умеренная
             {
                 public const double Memory = 60;
                 public const double Storage = 60;

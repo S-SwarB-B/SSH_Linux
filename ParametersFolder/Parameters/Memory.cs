@@ -8,10 +8,10 @@ namespace SSHProject.ParametersFolder.Parameters
 {
     internal class Memory
     {
-        public static double MemoryUsedParameter(string[] result, int countInResult)
+        public static double MemoryUsedParameter(string[] result, int countInResult) //MEMORY
         {
-            string[] memoryUsedParameters = result[countInResult].Split($"{Constants.Tags.TagMEMORY} ");
-            return Convert.ToDouble(memoryUsedParameters[1]);
+            string[] memoryUsedParameters = result[countInResult].Split($"{Constants.Tags.TagMEMORY} "); //Обработка результата
+            return Convert.ToDouble(memoryUsedParameters[1]);                                            //
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SSHProject
 {
     internal class ProblemDeleteInterval
     {
-        public static void DeleteSolutionProblem(SSHContext sc, int deleteSolutionProblemIntervalDay)
+        public static void DeleteSolutionProblem(SSHContext sc, int deleteSolutionProblemIntervalDay) //Очистка решенных проблем через определенный промежуток времени
         {
             var problems = sc.Problems.Where(x => DateTime.Now - x.DateProblemSolution > new TimeSpan(deleteSolutionProblemIntervalDay, 0, 0, 0) && x.StatusProblem == true).ToList();
             foreach (var problem in problems)
@@ -16,7 +16,7 @@ namespace SSHProject
                 sc.Problems.Remove(problem);
             }
         }
-        public static void DeleteParameters(SSHContext sc, int deleteParametersIntervalHour)
+        public static void DeleteParameters(SSHContext sc, int deleteParametersIntervalHour) //Очистка параметров через определенный промежуток времени
         {
             var parameters = sc.Parameters.Where(x => DateTime.Now - x.CreatedAt > new TimeSpan(deleteParametersIntervalHour, 0, 0)).ToList();
             foreach (var parameter in parameters)

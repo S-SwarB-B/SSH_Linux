@@ -8,10 +8,10 @@ namespace SSHProject.ParametersFolder.Parameters
 {
     internal class CPU
     {
-        public static double CPUUsedParameter(string[] result, int countInResult)
+        public static double CPUUsedParameter(string[] result, int countInResult) //CPU
         {
-            string[] CPUUsage = result[countInResult].Split($"{Constants.Tags.TagCPU} ");
-            return Convert.ToDouble(CPUUsage[1]);
+            string[] CPUUsage = result[countInResult].Split($"{Constants.Tags.TagCPU} "); //Обработка результата
+            return Convert.ToDouble(CPUUsage[1]);                                         //
         }
     }
 }

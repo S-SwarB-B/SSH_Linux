@@ -8,10 +8,10 @@ namespace SSHProject.ParametersFolder.Parameters
 {
     internal class Sync
     {
-        public static int SyncParameter(string[] result, int countInResult)
+        public static int SyncParameter(string[] result, int countInResult) //SYNC
         {
-            string[] syncInfo = result[countInResult].Split($"{Constants.Tags.TagSYNCTIME} ");
-            return Convert.ToInt32(syncInfo[1]);
+            string[] syncInfo = result[countInResult].Split($"{Constants.Tags.TagSYNCTIME} "); //Обработка результата
+            return Convert.ToInt32(syncInfo[1]);                                               //
         }
     }
 }

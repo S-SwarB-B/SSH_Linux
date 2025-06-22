@@ -7,24 +7,88 @@
       "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:sshconnect\\sshconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\sshconnect\\openfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:sshconnect\\openfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\serverfolder\\serverparametersfolder\\parametersserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:serverfolder\\serverparametersfolder\\parametersserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\sshconnect\\openfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:sshconnect\\openfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\serverfolder\\serverstatus\\serverstatusupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:serverfolder\\serverstatus\\serverstatusupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\serverfolder\\serverparameters\\parametersserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:serverfolder\\serverparameters\\parametersserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\problemdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\problemdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\searchproblem\\searchproblemserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\searchproblem\\searchproblemserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\searchproblem\\searchproblemfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\searchproblem\\searchproblemfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\searchproblem\\searchproblemconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\searchproblem\\searchproblemconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\problemdeleteinterval\\problemdeleteinterval.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\problemdeleteinterval\\problemdeleteinterval.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\messageproblem\\messages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\messageproblem\\messages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\dealingproblem\\dealingproblem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\dealingproblem\\dealingproblem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameterscompletion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameterscompletion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\currentparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\currentparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameters\\systime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameters\\systime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameters\\sync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameters\\sync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameters\\storage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameters\\storage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameters\\network160.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameters\\network160.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameters\\memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameters\\memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\parametersfolder\\parameters\\cpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:parametersfolder\\parameters\\cpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\fordb.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:fordb.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +98,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\Constants.cs",
+              "RelativeDocumentMoniker": "Constants.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\Constants.cs",
+              "RelativeToolTip": "Constants.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAcwF8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T19:11:20.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "OpenFile.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\SSHConnect\\OpenFile.cs",
+              "RelativeDocumentMoniker": "SSHConnect\\OpenFile.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\SSHConnect\\OpenFile.cs",
+              "RelativeToolTip": "SSHConnect\\OpenFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAACjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T19:06:35.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ServerStatusUpdate.cs",
               "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ServerFolder\\ServerStatus\\ServerStatusUpdate.cs",
               "RelativeDocumentMoniker": "ServerFolder\\ServerStatus\\ServerStatusUpdate.cs",
@@ -46,59 +136,20 @@
               "RelativeToolTip": "ServerFolder\\ServerStatus\\ServerStatusUpdate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T18:11:18.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SearchProblemConnect.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
-              "RelativeDocumentMoniker": "ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
-              "RelativeToolTip": "ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T18:11:07.539Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OpenFile.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\SSHConnect\\OpenFile.cs",
-              "RelativeDocumentMoniker": "SSHConnect\\OpenFile.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\SSHConnect\\OpenFile.cs",
-              "RelativeToolTip": "SSHConnect\\OpenFile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T17:58:24.231Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ParametersServer.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ServerFolder\\ServerParametersFolder\\ParametersServer.cs",
-              "RelativeDocumentMoniker": "ServerFolder\\ServerParametersFolder\\ParametersServer.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ServerFolder\\ServerParametersFolder\\ParametersServer.cs",
-              "RelativeToolTip": "ServerFolder\\ServerParametersFolder\\ParametersServer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T17:57:15.65Z",
+              "WhenOpened": "2025-06-22T19:06:29.893Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "ParametersServer.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ServerFolder\\ServerParameters\\ParametersServer.cs",
+              "RelativeDocumentMoniker": "ServerFolder\\ServerParameters\\ParametersServer.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ServerFolder\\ServerParameters\\ParametersServer.cs",
+              "RelativeToolTip": "ServerFolder\\ServerParameters\\ParametersServer.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T14:34:57.041Z",
+              "WhenOpened": "2025-06-22T18:54:35.767Z",
               "EditorCaption": ""
             },
             {
@@ -109,9 +160,230 @@
               "RelativeDocumentMoniker": "SSHConnect\\SSHConnect.cs",
               "ToolTip": "D:\\Programming\\C#\\SSHProject\\SSHConnect\\SSHConnect.cs",
               "RelativeToolTip": "SSHConnect\\SSHConnect.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwCMAAABfAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAgwFsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T14:29:13.124Z",
+              "WhenOpened": "2025-06-22T18:53:46.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProblemDefinition.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\ProblemDefinition.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\ProblemDefinition.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\ProblemDefinition.cs",
+              "RelativeToolTip": "ProblemFolder\\ProblemDefinition.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwC4AAACGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:49:23.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SearchProblemServer.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemServer.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\SearchProblem\\SearchProblemServer.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemServer.cs",
+              "RelativeToolTip": "ProblemFolder\\SearchProblem\\SearchProblemServer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:48:43.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SearchProblemFile.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemFile.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\SearchProblem\\SearchProblemFile.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemFile.cs",
+              "RelativeToolTip": "ProblemFolder\\SearchProblem\\SearchProblemFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:48:28.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SearchProblemConnect.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
+              "RelativeToolTip": "ProblemFolder\\SearchProblem\\SearchProblemConnect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:47:49.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProblemDeleteInterval.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\ProblemDeleteInterval\\ProblemDeleteInterval.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\ProblemDeleteInterval\\ProblemDeleteInterval.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\ProblemDeleteInterval\\ProblemDeleteInterval.cs",
+              "RelativeToolTip": "ProblemFolder\\ProblemDeleteInterval\\ProblemDeleteInterval.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:46:39.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Messages.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\Messages.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\MessageProblem\\Messages.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\Messages.cs",
+              "RelativeToolTip": "ProblemFolder\\MessageProblem\\Messages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:45:01.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DealingProblem.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\DealingProblem\\DealingProblem.cs",
+              "RelativeDocumentMoniker": "ProblemFolder\\DealingProblem\\DealingProblem.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\DealingProblem\\DealingProblem.cs",
+              "RelativeToolTip": "ProblemFolder\\DealingProblem\\DealingProblem.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:44:53.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ParametersCompletion.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\ParametersCompletion.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\ParametersCompletion.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\ParametersCompletion.cs",
+              "RelativeToolTip": "ParametersFolder\\ParametersCompletion.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACsAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:42:16.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CurrentParameters.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\CurrentParameters.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\CurrentParameters.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\CurrentParameters.cs",
+              "RelativeToolTip": "ParametersFolder\\CurrentParameters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:41:53.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SysTime.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\SysTime.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\Parameters\\SysTime.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\SysTime.cs",
+              "RelativeToolTip": "ParametersFolder\\Parameters\\SysTime.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:41:13.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Sync.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Sync.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\Parameters\\Sync.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Sync.cs",
+              "RelativeToolTip": "ParametersFolder\\Parameters\\Sync.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:41:11.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Storage.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Storage.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\Parameters\\Storage.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Storage.cs",
+              "RelativeToolTip": "ParametersFolder\\Parameters\\Storage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:41:08.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Network160.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Network160.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\Parameters\\Network160.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Network160.cs",
+              "RelativeToolTip": "ParametersFolder\\Parameters\\Network160.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:41:06.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Memory.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Memory.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\Parameters\\Memory.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\Memory.cs",
+              "RelativeToolTip": "ParametersFolder\\Parameters\\Memory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:40:59.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CPU.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\CPU.cs",
+              "RelativeDocumentMoniker": "ParametersFolder\\Parameters\\CPU.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ParametersFolder\\Parameters\\CPU.cs",
+              "RelativeToolTip": "ParametersFolder\\Parameters\\CPU.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:39:11.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAByAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T18:38:20.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ForDB.txt",
+              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ForDB.txt",
+              "RelativeDocumentMoniker": "ForDB.txt",
+              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ForDB.txt",
+              "RelativeToolTip": "ForDB.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-06-22T18:37:20.967Z",
               "EditorCaption": ""
             }
           ]

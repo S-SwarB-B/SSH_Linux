@@ -9,7 +9,7 @@ namespace SSHProject
 {
     internal class OpenFile
     {
-        public static SshCommand? StartServerMonitoringAgent(SshClient serverConnect, string path, string parametersServer, ref string? cmdReturnStr)
+        public static SshCommand? StartServerMonitoringAgent(SshClient serverConnect, string path, string parametersServer, ref string? cmdReturnStr) //Поиск файла
         {
             SshCommand? cmd = null;
             try
