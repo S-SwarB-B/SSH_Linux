@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SSHProject.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,16 @@ namespace SSHProject
 {
     internal class SearchProblemFile
     {
-        public static bool SearchInProblemFile(SSHContext sc, Server server) //Поиск ошибок отсутсвия файла
+        public static bool SearchInProblemFile(ServerMonitoringContext sc, Server server) //Поиск ошибок отсутсвия файла
         {
-            return sc.Problems 
-                    .Where(x => x.IdServer == server.IdServer)
-                    .Any(x => x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile); 
+            return sc.Errors 
+                    .Where(x => x.ServerId == server.Id)
+                    .Any(x => x.State == false && x.Message == Constants.ActiveProblem.MessageFailedFile); 
         }
-        public static Problem SearchCertainProblemFile(SSHContext sc, Server server) //Поиск конкретной ошибки отсутсвия файла
+        public static Error SearchCertainProblemFile(ServerMonitoringContext sc, Server server) //Поиск конкретной ошибки отсутсвия файла
         {
-            return sc.Problems.First(x => x.IdServer == server.IdServer
-                   && x.StatusProblem == false && x.MessageProblem == Constants.ActiveProblem.MessageFailedFile);
+            return sc.Errors.First(x => x.ServerId == server.Id
+                   && x.State == false && x.Message == Constants.ActiveProblem.MessageFailedFile);
         }
     }
 }

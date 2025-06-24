@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSHProject.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,20 @@ namespace SSHProject
 {
     internal class DealingProblem
     {
-        public static void ProblemAdd(SSHContext pc, Guid IdServer_, int ErrorImportance_, string message) //Добавление новой проблемы
+        public static void ProblemAdd(ServerMonitoringContext pc, Guid IdServer_, int ErrorImportance_, string message, DateTime startProgram) //Добавление новой проблемы
         {
             try
             {
-                Problem newProblem = new Problem()
+                Error newProblem = new Error()
                 {
-                    DateTimeProblem = DateTime.Now,
-                    DateProblemSolution = null,
-                    ErrorImportance = ErrorImportance_,
-                    StatusProblem = false,
-                    IdServer = IdServer_,
-                    MessageProblem = message
+                    CreatedAt = startProgram,
+                    FinishedAt = null,
+                    Importance = ErrorImportance_,
+                    State = false,
+                    ServerId = IdServer_,
+                    Message = message
                 };
-                pc.Problems.Add(newProblem);
+                pc.Errors.Add(newProblem);
                 pc.SaveChanges();
             }
             catch (Exception ex)
@@ -30,12 +31,12 @@ namespace SSHProject
             }
         }
 
-        public static void ProblemUpdate(SSHContext pc, Problem problem, int ErrorImportance_, string message) //Измение существующей проблемы
+        public static void ProblemUpdate(ServerMonitoringContext pc, Error problem, int ErrorImportance_, string message) //Измение существующей проблемы
         {
             try
             {
-                problem.MessageProblem = message;
-                problem.ErrorImportance = ErrorImportance_;
+                problem.Message = message;
+                problem.Importance = ErrorImportance_;
 
                 pc.SaveChanges();
             }
@@ -45,13 +46,13 @@ namespace SSHProject
             }
         }
 
-        public static void ProblemSolving(SSHContext pc, Problem problem, string message) //Решение проблеммы
+        public static void ProblemSolving(ServerMonitoringContext pc, Error problem, string message, DateTime startProgram) //Решение проблеммы
         {
             try
             {
-                problem.MessageProblem = message;
-                problem.DateProblemSolution = DateTime.Now;
-                problem.StatusProblem = true;
+                problem.Message = message;
+                problem.FinishedAt = startProgram;
+                problem.State = true;
 
                 pc.SaveChanges();
             }

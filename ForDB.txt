@@ -2,53 +2,47 @@
 
 drop extension pgcrypto;
 
-create table Servers_Groups
+create table block (
+	id uuid primary key default gen_random_uuid(),
+	name varchar not null
+);
+
+create table server (
+	id uuid primary key default gen_random_uuid(),
+	host_name varchar not null,
+	ip_addres varchar not null,
+	block_id uuid not null references block(id),
+	state bool not null default true
+);
+
+create table metric (
+	id uuid primary key default gen_random_uuid(),
+	created_at timestamp not null,
+	server_id uuid not null references server(id),
+	ram int not null default 0,
+	cpu int not null default 0,
+	strorage int not null default 0
+);
+
+create table error (
+	id uuid primary key default gen_random_uuid(),
+	created_at timestamp not null,
+	finished_at timestamp null,
+	importance int not null,
+	state bool not null,
+	server_id uuid not null references server(id),
+	message text not null
+);
+
+create table parameter
 (
-  id_server_group UUID primary key default gen_random_uuid(),
-  name_server_group varchar not null
+	id uuid primary key default gen_random_uuid(),
+	name varchar not null
 );
 
-create table Servers(
-  id_server UUID primary key default gen_random_uuid(), 
-  name_server varchar not null,
-  ip_adress varchar not null,
-  id_server_group uuid not null references Servers_Groups(id_server_group),
-  server_status bool
-);
-
-create table Parameters
+create table server_parameter
 (
-  request_id uuid primary key default gen_random_uuid(),
-  created_at timestamp not null,
-  id_server uuid not null references Servers(id_server),
-  ram_mb int NOT NULL CHECK (ram_mb > 0),
-  cpu_percent int NOT NULL CHECK (cpu_percent BETWEEN 0 AND 100),
-  rom_mb int NOT NULL CHECK (rom_mb > 0)
+	id uuid primary key default gen_random_uuid(),
+	server_id uuid not null references server(id),
+	parameter_id uuid references parameter(id)
 );
-
-create table Problems(
-  id_problem UUID primary key default gen_random_uuid(),
-  date_time_problem TIMESTAMP not null,
-  date_problem_solution TIMESTAMP,
-  error_importance int not null,
-  status_problem bool not null,
-  id_server UUID not null references Servers(id_server),
-  message_problem text not null
-);
-
-create table Additional_Parameters
-(
-  id_additional_parameter uuid primary key default gen_random_uuid(),
-  name varchar not null
-);
-
-create table Additional_ParametersServers
-(
-  id_additional_parameter uuid references Additional_Parameters(id_additional_parameter),
-  id_server uuid not null references Servers(id_server)
-);
-
-insert into Additional_Parameters(name) values
-('[SYSTIME]'),
-('[SYNCTIME]'),
-('[NETWORK]');

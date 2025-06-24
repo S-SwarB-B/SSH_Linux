@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSHProject.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,11 @@ namespace SSHProject
 {
     internal class ServerStatusUpdate
     {
-        public static void ServerStatusUpd(SSHContext pc, Server server, bool serverStatus) //Обновление статуса проблемы
+        public static void ServerStatusUpd(ServerMonitoringContext pc, Server server, bool serverStatus) //Обновление статуса проблемы
         {
             try
             {
-                server.ServerStatus = serverStatus;
+                server.State = serverStatus;
 
                 pc.SaveChanges();
             }

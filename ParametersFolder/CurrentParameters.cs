@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSHProject.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,19 @@ namespace SSHProject.ParametersFolder
 {
     internal class CurrentParameters
     {
-        public static void AddParametersInDataBase(SSHContext pc, Guid idServer_, double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter) //Заполнение параметров
+        public static void AddParametersInDataBase(ServerMonitoringContext pc, Guid idServer_, double ramUsedPercent, double cpuUsageParameter, double diskUsageParameter, DateTime startProgram) //Заполнение параметров
         {
             try
             {
-                Parameter newParameter = new Parameter() //Заполнение нового параметра
+                Metric newParameter = new Metric() //Заполнение нового параметра
                 {
-                    CreatedAt = DateTime.Now,
-                    IdServer = idServer_,
-                    RamMb = Convert.ToInt32(Math.Round((decimal)ramUsedPercent, 0)),
-                    CpuPercent = Convert.ToInt32(Math.Round((decimal)cpuUsageParameter, 0)),
-                    RomMb = Convert.ToInt32(Math.Round((decimal)diskUsageParameter, 0))
+                    CreatedAt = startProgram,
+                    ServerId = idServer_,
+                    Ram = Convert.ToInt32(Math.Round((decimal)ramUsedPercent, 0)),
+                    Cpu = Convert.ToInt32(Math.Round((decimal)cpuUsageParameter, 0)),
+                    Strorage = Convert.ToInt32(Math.Round((decimal)diskUsageParameter, 0))
                 };
-                pc.Parameters.Add(newParameter); //Добавление в бд
+                pc.Metrics.Add(newParameter); //Добавление в бд
                 pc.SaveChanges();
             }
             catch (Exception ex)

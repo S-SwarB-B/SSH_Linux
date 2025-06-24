@@ -41,12 +41,12 @@ namespace SSHProject
         {
             public const string MessageFailedConnect = "Подключение не установлено";
             public const string MessageFailedFile = "Файл запуска программы не найден";
-            public const string MemoryProblem = "MEMORY:";
-            public const string StorageProblem = "STORAGE:";
-            public const string CPUProblem = "CPU:";
-            public const string NetworkProblem = "Network:";
-            public const string SyncProblem = "Sync:";
-            public const string SystimeProblem = "Systime:";
+            public const string MemoryProblem = "MEMORY";
+            public const string StorageProblem = "STORAGE";
+            public const string CPUProblem = "CPU";
+            public const string NetworkProblem = "Айпи не соответсвует требованиям";
+            public const string SyncProblem = "Проблема с синхронизацией времени";
+            public const string SystimeProblem = "Проблема с системным временем";
         }
 
         //Сообщения решенных ошибок
@@ -57,7 +57,12 @@ namespace SSHProject
         {
             public const string MessageSuccessfulConnect = "Удалось установить подключение";
             public const string MessageSuccessfulFile = "Файл запуска программы найден";
-            public const string MessageSuccessfulProblem = "Проблема была решена";
+            public const string MessageSuccessfulMemory = "Проблема с нагрузкой оперативной памяти была решена";
+            public const string MessageSuccessfulStorage = "Проблема с нагрузкой диска была решена";
+            public const string MessageSuccessfulCPU = "Проблема с нагрузкой центрального процессора была решена";
+            public const string MessageSuccessfulNetwork = "Проблема с айпи была решена";
+            public const string MessageSuccessfulSync = "Проблема с синхронизацией времени была решена";
+            public const string MessageSuccessfulSystime = "Проблема с системным временем была решена";
         }
 
 
@@ -72,34 +77,19 @@ namespace SSHProject
             public const string TagNETWORK = "[NETWORK]";
         }
 
-        //Критичность (Первые четыре пункта опасно трогать)
-        internal static class ErrorImportanceClass
+        //Критичность
+        internal static class ErrorImportanceClass //Стандартные параметры лучше не менять
         {
-            internal static class Critical //Критичная
+            internal static class ImportanceStandart //Для стандартного мониторинга (CPU, MEMORY, STORAGE)
             {
-                public const double Memory = 90;
-                public const double Storage = 90;
-                public const double CPU = 90;
+                public const double Critical = 90;
+                public const double VeryHight = 80;
+                public const double Hight = 70;
+                public const double Medium = 50;
+                public const double Low = 50;
+                public const double VeryLow = 45;
             }
-            internal static class VeryHight //Очень выскокая
-            {
-                public const double Memory = 80;
-                public const double Storage = 80;
-                public const double CPU = 80;
-            }
-            internal static class Hight //Выскокая
-            {
-                public const double Memory = 70;
-                public const double Storage = 70;
-                public const double CPU = 70;
-            }
-            internal static class Medium //Умеренная
-            {
-                public const double Memory = 60;
-                public const double Storage = 60;
-                public const double CPU = 60;
-            }
-            internal static class ImportanceAdditional // 2 - Medium; 3 - Hight; 4 - VeryHight; 5 - Critical
+            internal static class ImportanceAdditional //1 - Low; 2 - Medium; 3 - Hight; 4 - VeryHight; 5 - Critical
             {
                 public const int Sync = 2;
                 public const int Network = 2;

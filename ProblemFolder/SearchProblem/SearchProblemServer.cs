@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Org.BouncyCastle.Bcpg.OpenPgp;
+using Renci.SshNet.Messages;
+using SSHProject.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +11,17 @@ namespace SSHProject.ProblemFolder.SearchProblem
 {
     internal class SearchProblemServer
     {
-        public static bool SearchInProblemServer(SSHContext sc, Server server) //Поиск ошибок
+        public static bool SearchInProblemServer(ServerMonitoringContext sc, Server server, string message) //Поиск ошибок
         {
-            return sc.Problems.
-                    Where(x => x.IdServer == server.IdServer)
-                    .Any(x => x.StatusProblem == false);
+            return sc.Errors.
+                    Where(x => x.ServerId == server.Id)
+                    .Any(x => x.State == false && x.Message.Contains(message));
         }
-        public static Problem SearchCertainProblemServer(SSHContext sc, Server server) //Поиск конкретной ошибки
+        public static Error SearchCertainProblemServer(ServerMonitoringContext sc, Server server, string message) //Поиск конкретной ошибки
         {
-            return sc.Problems.First( 
-                x => x.IdServer == server.IdServer &&
-                x.StatusProblem == false);
+            return sc.Errors.First( 
+                x => x.ServerId == server.Id &&
+                x.State == false && x.Message.Contains(message));
         }
     }
 }

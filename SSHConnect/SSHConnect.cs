@@ -1,4 +1,5 @@
 ﻿using Renci.SshNet;
+using SSHProject.DB;
 using SSHProject.ParametersFolder;
 using SSHProject.ParametersFolder.Parameters;
 using SSHProject.ProblemFolder;
@@ -12,9 +13,15 @@ namespace SSHProject
 {
     internal class SSHConnect
     {
-        public void SSH(Guid idServer, string ip, string login, string password, string path, SSHContext sc)
+        public void SSH(Guid idServer, string ip, string login, string password, string path, ServerMonitoringContext sc, DateTime startProgram)
         {
-            var server = sc.Servers.First(x => x.IdServer == idServer);
+            var server = sc.Servers.First(x => x.Id == idServer);
+
+            double memoryUsedPercent = 0; //Процент загруженности оперативной памяти
+
+            double cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
+
+            double storageUsageParameter = 0; //Процент загруженности диска
 
             using (var serverConnect = new SshClient(ip, login, password)) //Подключение к серверу
             {
@@ -27,7 +34,7 @@ namespace SSHProject
                     if (searchInProblemConnect)
                     {
                         var problem = SearchProblemConnect.SearchCertainProblemConnect(sc, server); //Конкретная проблема
-                        DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulConnect); //Решение проблемы
+                        DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulConnect, startProgram); //Решение проблемы
                     }
 
                     ServerStatusUpdate.ServerStatusUpd(sc, server, true); //Смена статуса на активированный
@@ -46,17 +53,11 @@ namespace SSHProject
                         if (searchInProblemFile)
                         {
                             var problem = SearchProblemFile.SearchCertainProblemFile(sc, server); //Конкретная проблема
-                            DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulFile); //Решение проблемы
+                            DealingProblem.ProblemSolving(sc, problem, Constants.SolutionsProblem.MessageSuccessfulFile, startProgram); //Решение проблемы
                         }
 
                         string[] result = cmdReturnStr.Split("\n"); //Получение данных из CMD
-         
-                        double memoryUsedPercent = 0; //Процент загруженности оперативной памяти
-
-                        double cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
-
-                        double storageUsageParameter = 0; //Процент загруженности диска
-
+                           
                         int sync = -1; //Синхронизация
 
                         int systime = -1; //Системное время
@@ -72,12 +73,10 @@ namespace SSHProject
                             ref network                         //
                         );                                      //
 
-                        CurrentParameters.AddParametersInDataBase(sc, server.IdServer, memoryUsedPercent, cpuUsageParameter, storageUsageParameter); //Заполнение параметров серверов
+                        CurrentParameters.AddParametersInDataBase(sc, server.Id, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, startProgram); //Заполнение параметров серверов
 
-                        string message = Messages.Message(memoryUsedPercent, cpuUsageParameter, storageUsageParameter,
-                        sync, systime, network); //Получение сообщения о нагруженности
-
-                        ProblemDefinition.ProblemDef(sc, message, server, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, systime, sync, network); //Работа с проблемами
+                        Messages.ProblemMessage(sc, server, startProgram, memoryUsedPercent, cpuUsageParameter, storageUsageParameter,
+                        sync, systime, network); //Получение проблем
 
                     }
                     else //Файл не найден
@@ -86,8 +85,10 @@ namespace SSHProject
 
                         if (!searchInProblemFile)
                         {
-                            DealingProblem.ProblemAdd(sc, server.IdServer, 5, Constants.ActiveProblem.MessageFailedFile); //Запись проблемы
+                            DealingProblem.ProblemAdd(sc, server.Id, 5, Constants.ActiveProblem.MessageFailedFile, startProgram); //Запись проблемы
                         }
+
+                        CurrentParameters.AddParametersInDataBase(sc, server.Id, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, startProgram); //Заполнение параметров серверов
                     }
                 }
                 else //Подключение не установлено
@@ -98,8 +99,10 @@ namespace SSHProject
 
                     if (!searchInProblemConnect)
                     {
-                        DealingProblem.ProblemAdd(sc, server.IdServer, 5, Constants.ActiveProblem.MessageFailedConnect); //Запись проблемы
+                        DealingProblem.ProblemAdd(sc, server.Id, 5, Constants.ActiveProblem.MessageFailedConnect, startProgram); //Запись проблемы
                     }
+
+                    CurrentParameters.AddParametersInDataBase(sc, server.Id, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, startProgram); //Заполнение параметров серверов
                 }
                 serverConnect.Disconnect(); //Отключение от сервера
             }

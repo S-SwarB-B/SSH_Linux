@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SSHProject.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +10,20 @@ namespace SSHProject
 {
     internal class SearchProblemConnect
     {
-        public static bool SearchInProblemConnect(SSHContext sc, Server server) //Поиск ошибок подключения
+        public static bool SearchInProblemConnect(ServerMonitoringContext sc, Server server) //Поиск ошибок подключения
         {
-            return sc.Problems
-                .Where(x => x.IdServer == server.IdServer)
-                .Include(x => x.IdServerNavigation)
-                .Any(x => x.StatusProblem == false && x.IdServerNavigation.ServerStatus == false 
-                    && x.MessageProblem == Constants.ActiveProblem.MessageFailedConnect);
+            return new ServerMonitoringContext().Errors
+                .Where(x => x.ServerId == server.Id)
+                .Include(x => x.Server)
+                .Any(x => x.State == false && x.Server.State == false 
+                    && x.Message == Constants.ActiveProblem.MessageFailedConnect);
         }
-        public static Problem SearchCertainProblemConnect (SSHContext sc, Server server) //Поиск конкретной ошибки подключения
+        public static Error SearchCertainProblemConnect (ServerMonitoringContext sc, Server server) //Поиск конкретной ошибки подключения
         {
-            return sc.Problems.Include(x => x.IdServerNavigation).First(x => x.IdServer == server.IdServer
-                   && x.IdServerNavigation.ServerStatus == false
-                   && x.StatusProblem == false
-                   && x.MessageProblem == Constants.ActiveProblem.MessageFailedConnect
+            return sc.Errors.Include(x => x.Server).First(x => x.ServerId == server.Id
+                   && x.Server.State == false
+                   && x.State == false
+                   && x.Message == Constants.ActiveProblem.MessageFailedConnect
                    );
         }
     }

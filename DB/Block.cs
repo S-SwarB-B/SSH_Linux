@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace SSHProject.DB;
 
-public partial class Parameter
+public partial class Block
 {
     public Guid Id { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<ServerParameter> ServerParameters { get; set; } = new List<ServerParameter>();
+    public virtual ICollection<Server> Servers { get; set; } = new List<Server>();
 }

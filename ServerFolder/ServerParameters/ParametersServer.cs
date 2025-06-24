@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using SSHProject.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace SSHProject
 {
     internal class ParametersServer
     {
-        public static string ParametersForServer(SSHContext sc, Server server) //Получение уникальных параметров для этого сервера
+        public static string ParametersForServer(ServerMonitoringContext sc, Server server) //Получение уникальных параметров для этого сервера
         {
-            List<string> parameters = sc.AdditionalParametersservers //Получение списка этих параметров
-                .Where(x => x.IdServer == server.IdServer)
-                .Include(x => x.IdAdditionalParameterNavigation)
-                .Select(x => x.IdAdditionalParameterNavigation.Name)
+            List<string> parameters = sc.ServerParameters //Получение списка этих параметров
+                .Where(x => x.ServerId == server.Id)
+                .Include(x => x.Parameter)
+                .Select(x => x.Parameter.Name)
                 .ToList() ?? new List<string>();
 
             if (parameters.Count > 0) //Если есть уникальные параметры
