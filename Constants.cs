@@ -37,6 +37,14 @@ namespace SSHProject
         // # NetworkProblem - Сообщение о неправильности IP
         // # SyncProblem - Сообщение о неправильной синхронизации
         // # SystimeProblem - Сообщение о проблеме с временем
+        // # DemonDockerProblem - Сообщение о незапущенном демоне докера
+        // # SduProblem - Сообщение о незапущенном контейнере SDU
+        // # FileStorageProblem - Сообщение о непримонтированном файловом хранище
+        // # ContainerPostgresProblem - Сообщение о незапущенном контейнере Postgres
+        // # ETCDProblem - Сообщение о незапущенном контейнере ETCD
+        // # DDMWebAdminProblem - Сообщение о незапущенном контейнере DDMWebAdmin
+        // # DDMWebUiProblem - Сообщение о незапущенном контейнере DDMWebUi
+        // # DDMWebApiProblem - Сообщение о незапущенном контейнере DDMWebApi
         internal static class ActiveProblem
         {
             public const string MessageFailedConnect = "Подключение не установлено";
@@ -47,12 +55,17 @@ namespace SSHProject
             public const string NetworkProblem = "Айпи не соответсвует требованиям";
             public const string SyncProblem = "Проблема с синхронизацией времени";
             public const string SystimeProblem = "Проблема с системным временем";
+            public const string DemonDockerProblem = "Демон докера не запущен";
+            public const string SduProblem = "Контейнер sdu не запущен";
+            public const string FileStorageProblem = "Файловое хранилище не примонтировано";
+            public const string ContainerPostgresProblem = "Контейнер postgres не запущен";
+            public const string ETCDProblem = "Контейнер etcd не запущен";
+            public const string DDMWebAdminProblem = "Контейнер ddmwebadmin-ui не запущен";
+            public const string DDMWebUiProblem = "Контейнер ddmweb-ui не запущен";
+            public const string DDMWebApiProblem = "Контейнер ddmwebapi не запущен";
         }
 
         //Сообщения решенных ошибок
-        // # MessageSuccessfulConnect - Сообщение о удачном подключении
-        // # MessageSuccessfulFile - Сообщение о найденном файле
-        // # MessageSuccessfulProblem - Сообщение о решении проблемы
         internal static class SolutionsProblem
         {
             public const string MessageSuccessfulConnect = "Удалось установить подключение";
@@ -63,6 +76,14 @@ namespace SSHProject
             public const string MessageSuccessfulNetwork = "Проблема с айпи была решена";
             public const string MessageSuccessfulSync = "Проблема с синхронизацией времени была решена";
             public const string MessageSuccessfulSystime = "Проблема с системным временем была решена";
+            public const string MessageSuccessfulDemonDocker = "Демон докера смог запуститься";
+            public const string MessageSuccessfulSdu = "Контейнер sdu смог запуститься";
+            public const string MessageSuccessfulFileStorage = "Файловое хранилище получилось примонтировать";
+            public const string MessageSuccessfulContainerPostgres = "Контейнер postgres запустился";
+            public const string MessageSuccessfulETCD = "Контейнер etcd запустился";
+            public const string MessageSuccessfulDDMWebAdmin = "Контейнер ddmwebadmin-ui запустился";
+            public const string MessageSuccessfulDDMWebUi = "Контейнер ddmweb-ui запустился";
+            public const string MessageSuccessfulDDMWebApi = "Контейнер ddmwebapi запустился";
         }
 
 
@@ -75,6 +96,14 @@ namespace SSHProject
             public const string TagSYSTIME = "[SYSTIME]";
             public const string TagSYNCTIME = "[SYNCTIME]";
             public const string TagNETWORK = "[NETWORK]";
+            public const string TagDEMONDOCKER = "";
+            public const string TagCONSDU = "";
+            public const string TagFILESTORAGE = "";
+            public const string TagCONPOSTGRES = "";
+            public const string TagCONETCD = "";
+            public const string TagDDMWEBADMIN = "";
+            public const string TagDDMWEB = "";
+            public const string TagDDMWEBAPI = "";
         }
 
         //Критичность
@@ -89,11 +118,19 @@ namespace SSHProject
                 public const double Low = 50;
                 public const double VeryLow = 45;
             }
-            internal static class ImportanceAdditional //1 - Low; 2 - Medium; 3 - Hight; 4 - VeryHight; 5 - Critical
+            internal static class ImportanceAdditional //0 - VeryLow; 1 - Low; 2 - Medium; 3 - Hight; 4 - VeryHight; 5 - Critical
             {
                 public const int Sync = 2;
                 public const int Network = 2;
                 public const int SysTime = 2;
+                public const int DemonDocker = 2;
+                public const int ContainerSDU = 2;
+                public const int FileStorage = 2;
+                public const int ContainerPostrges = 2;
+                public const int ConteinerETCD = 2;
+                public const int DDMWebAdmin = 2;
+                public const int DDMWeb = 2;
+                public const int DDMWebApi = 2;
             }
         }
     }

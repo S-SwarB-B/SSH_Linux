@@ -17,11 +17,11 @@ namespace SSHProject
         {
             var server = sc.Servers.First(x => x.Id == idServer);
 
-            double memoryUsedPercent = 0; //Процент загруженности оперативной памяти
+            int memoryUsedPercent = 0; //Процент загруженности оперативной памяти
 
-            double cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
+            int cpuUsageParameter = 0; //Процент загруженности центрального процессора (CPU)
 
-            double storageUsageParameter = 0; //Процент загруженности диска
+            int storageUsageParameter = 0; //Процент загруженности диска
 
             using (var serverConnect = new SshClient(ip, login, password)) //Подключение к серверу
             {
@@ -63,20 +63,44 @@ namespace SSHProject
                         int systime = -1; //Системное время
 
                         int network = -1; //IP
-                        
-                        ParametersCompletion.Parameters(result, //
-                            ref memoryUsedPercent,              //
-                            ref storageUsageParameter,          //
-                            ref cpuUsageParameter,              // Получение параметров
-                            ref sync,                           //
-                            ref systime,                        //
-                            ref network                         //
-                        );                                      //
+
+                        int demonDocker = -1; //Демон докера
+
+                        int containerSDU = -1; //Контейнер SDU
+
+                        int fileStorage = -1; //Файловое хранилище
+
+                        int containerPostgres = -1; //Контейнер постгрес
+
+                        int containerETCD = -1; //Контейнер ETCD
+
+                        int ddmWebAdmin = -1; //Контейнер DDMWebAdmin
+
+                        int ddmWeb = -1; //Контейнер DDMWebUi
+
+                        int ddmWebApi = -1; //Контейнер DDMWebApi
+
+                        ParametersCompletion.Parameters(result, 
+                            ref memoryUsedPercent,              
+                            ref storageUsageParameter,          
+                            ref cpuUsageParameter,              
+                            ref sync,                           
+                            ref systime,                        
+                            ref network,
+                            ref demonDocker,
+                            ref containerSDU,
+                            ref fileStorage,
+                            ref containerPostgres,
+                            ref containerETCD,
+                            ref ddmWebAdmin,
+                            ref ddmWeb,
+                            ref ddmWebApi
+                        );                                      
 
                         CurrentParameters.AddParametersInDataBase(sc, server.Id, memoryUsedPercent, cpuUsageParameter, storageUsageParameter, startProgram); //Заполнение параметров серверов
 
                         Messages.ProblemMessage(sc, server, startProgram, memoryUsedPercent, cpuUsageParameter, storageUsageParameter,
-                        sync, systime, network); //Получение проблем
+                        sync, systime, network, demonDocker, containerSDU, fileStorage, containerPostgres, containerETCD, ddmWebAdmin, ddmWeb, ddmWebApi); //Получение проблем
 
                     }
                     else //Файл не найден
