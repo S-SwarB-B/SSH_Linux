@@ -96,14 +96,14 @@ namespace SSHProject
             public const string TagSYSTIME = "[SYSTIME]";
             public const string TagSYNCTIME = "[SYNCTIME]";
             public const string TagNETWORK = "[NETWORK]";
-            public const string TagDEMONDOCKER = "ffff";
-            public const string TagCONSDU = "ffff";
-            public const string TagFILESTORAGE = "ffff";
-            public const string TagCONPOSTGRES = "ffff";
-            public const string TagCONETCD = "ffff";
-            public const string TagDDMWEBADMIN = "ffff";
-            public const string TagDDMWEB = "ffff";
-            public const string TagDDMWEBAPI = "ffff";
+            public const string TagDEMONDOCKER = "[DOCKER]";
+            public const string TagCONSDU = "[SDUCON]";
+            public const string TagFILESTORAGE = "[FILESHARE]";
+            public const string TagCONPOSTGRES = "[POSTGRESCON]";
+            public const string TagCONETCD = "[ETCDCON]";
+            public const string TagDDMWEBADMIN = "[DDMWEBADMINCON]";
+            public const string TagDDMWEB = "[DDMWEBCON]";
+            public const string TagDDMWEBAPI = "[DDMWEBAPICON]";
         }
 
         //Критичность
