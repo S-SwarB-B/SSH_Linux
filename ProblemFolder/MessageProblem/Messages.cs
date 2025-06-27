@@ -61,14 +61,14 @@ namespace SSHProject
 
             importance = ProblemDefinition.ErrorImportance(0, 0, 0, -1, systime, -1, -1, -1, -1, -1, -1, -1, -1, -1, sc, server, Constants.ActiveProblem.SyncProblem);
             MessageProblemAdditional.AdditionalMessage(sc, server,
-                network, importance,
+                systime, importance,
                 Constants.ActiveProblem.SystimeProblem, Constants.SolutionsProblem.MessageSuccessfulSystime,
                 startProgram
                 );
 
             importance = ProblemDefinition.ErrorImportance(0, 0, 0, -1, -1, network, -1, -1, -1, -1, -1, -1, -1, -1, sc, server, Constants.ActiveProblem.SyncProblem);
             MessageProblemAdditional.AdditionalMessage(sc, server,
-                systime, importance,
+                network, importance,
                 Constants.ActiveProblem.NetworkProblem, Constants.SolutionsProblem.MessageSuccessfulNetwork,
                 startProgram
                 );

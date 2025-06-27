@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Programming\\C#\\SSHProject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\messageproblem\\messageproblemstandart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\messageproblem\\messageproblemstandart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\messageproblem\\messages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\messageproblem\\messages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|d:\\programming\\c#\\sshproject\\problemfolder\\messageproblem\\messageproblemadditional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5F480-1A7A-4538-AC5A-5C054E34A78B}|SSHProject.csproj|solutionrelative:problemfolder\\messageproblem\\messageproblemadditional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MessageProblemStandart.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\MessageProblemStandart.cs",
-              "RelativeDocumentMoniker": "ProblemFolder\\MessageProblem\\MessageProblemStandart.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\MessageProblemStandart.cs",
-              "RelativeToolTip": "ProblemFolder\\MessageProblem\\MessageProblemStandart.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T05:49:10.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Messages.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\Messages.cs",
-              "RelativeDocumentMoniker": "ProblemFolder\\MessageProblem\\Messages.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\Messages.cs",
-              "RelativeToolTip": "ProblemFolder\\MessageProblem\\Messages.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T05:49:09.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MessageProblemAdditional.cs",
-              "DocumentMoniker": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\MessageProblemAdditional.cs",
-              "RelativeDocumentMoniker": "ProblemFolder\\MessageProblem\\MessageProblemAdditional.cs",
-              "ToolTip": "D:\\Programming\\C#\\SSHProject\\ProblemFolder\\MessageProblem\\MessageProblemAdditional.cs",
-              "RelativeToolTip": "ProblemFolder\\MessageProblem\\MessageProblemAdditional.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T05:49:04.905Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
